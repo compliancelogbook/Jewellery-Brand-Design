@@ -33,7 +33,7 @@ export default function BrandShell({ children }: { children: ReactNode }) {
   return (
     <div className="site-shell">
       <div className="shipping-ticker" role="note">
-        <div className="shipping-ticker__track"><span>Complimentary UK delivery over £100</span><i /> <span>Objects made in small, considered runs</span><i /> <span>Complimentary UK delivery over £100</span></div>
+        <div className="shipping-ticker__track"><span>Complimentary UK delivery over £100</span><i /> <span>Jewellery made in small, considered runs</span><i /> <span>Complimentary UK delivery over £100</span></div>
       </div>
       <header className={`site-header ${isHome && !isScrolled ? "site-header--over" : "site-header--solid"}`}>
         <Link href="/" className="wordmark" aria-label="Orielé home"><OrbitMark /><span>Orielé</span><em>Jewellery studio</em></Link>
@@ -50,7 +50,7 @@ export default function BrandShell({ children }: { children: ReactNode }) {
       <div className={`mobile-menu ${isMenuOpen ? "mobile-menu--open" : ""}`} aria-hidden={!isMenuOpen}>
         <div className="mobile-menu__top"><Link href="/" className="wordmark"><OrbitMark /><span>Orielé</span></Link><button onClick={() => setMenuOpen(false)} aria-label="Close menu"><X size={23} strokeWidth={1.3} /></button></div>
         <nav aria-label="Mobile navigation">{nav.map((item) => <Link key={item.label} href={item.href}>{item.label}</Link>)}</nav>
-        <p>Objects of a well-kept summer.</p>
+        <p>Jewellery for a well-kept summer.</p>
       </div>
       <main>{children}</main>
       <Footer />

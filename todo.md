@@ -1,0 +1,5 @@
+- [x] Locate every object-oriented phrase and every saffron/yellow accent in the storefront.
+- [x] Rewrite all customer-facing copy around jewellery, keepsakes, and adornment.
+- [x] Replace the saffron accent with a quieter mineral accent and revise related UI treatments.
+- [x] Add smooth scrolling and premium micro-interaction behaviours with reduced-motion support.
+- [x] Build, verify desktop and mobile views, then checkpoint the refinement.

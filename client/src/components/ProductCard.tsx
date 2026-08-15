@@ -1,4 +1,4 @@
-/** Orielé visual system: restrained product cards, ink-backed object photography, centred information hierarchy. */
+/** Orielé visual system: restrained product cards, ink-backed jewellery photography, centred information hierarchy. */
 import { Link } from "wouter";
 import type { Piece } from "../data/catalog";
 
