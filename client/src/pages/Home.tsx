@@ -1,25 +1,24 @@
-import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
-import { Streamdown } from 'streamdown';
+/** Orielé visual system: full-bleed tide hero, commerce rails, calm editorial interruption. */
+import { ArrowLeft, ArrowRight, MoveUpRight, Sparkles } from "lucide-react";
+import { useRef } from "react";
+import { Link } from "wouter";
+import ProductCard from "@/components/ProductCard";
+import { pieces } from "../data/catalog";
 
-/**
- * All content in this page are only for example, replace with your own feature implementation
- * When building pages, remember your instructions in Frontend Best Practices, Design Guide and Common Pitfalls
- */
+function Rail({ eyebrow, title, copy, items }: { eyebrow?: string; title: string; copy: string; items: typeof pieces }) {
+  const rail = useRef<HTMLDivElement>(null);
+  const shift = (direction: number) => rail.current?.scrollBy({ left: direction * (rail.current.clientWidth * 0.77), behavior: "smooth" });
+  return <section className="product-rail reveal"><div className="product-rail__intro"><div>{eyebrow && <span className="eyebrow">{eyebrow}</span>}<h2>{title}</h2><p>{copy}</p></div><div className="rail-controls"><button onClick={() => shift(-1)} aria-label={`Previous ${title} pieces`}><ArrowLeft size={19} strokeWidth={1.2} /></button><button onClick={() => shift(1)} aria-label={`Next ${title} pieces`}><ArrowRight size={19} strokeWidth={1.2} /></button></div></div><div className="product-rail__track" ref={rail}>{items.map((piece) => <ProductCard key={piece.slug} piece={piece} />)}</div><Link href="/collections/sola" className="text-link">Explore the collection <MoveUpRight size={16} strokeWidth={1.4} /></Link></section>;
+}
+
 export default function Home() {
-  // If theme is switchable in App.tsx, we can implement theme toggling like this:
-  // const { theme, toggleTheme } = useTheme();
-
-  return (
-    <div className="min-h-screen flex flex-col">
-      <main>
-        {/* Example: lucide-react for icons */}
-        <Loader2 className="animate-spin" />
-        Example Page
-        {/* Example: Streamdown for markdown rendering */}
-        <Streamdown>Any **markdown** content</Streamdown>
-        <Button variant="default">Example Button</Button>
-      </main>
-    </div>
-  );
+  return <>
+    <section className="hero"><img src="/manus-storage/oriele-hero-mediterranean-tide_8af5f0e5.jpg" alt="Deep teal Mediterranean water moving around a pale limestone shore" /><div className="hero__veil" /><div className="hero__signature"><img src="/manus-storage/oriele-orbit-mark_948ea730.png" alt="" /><span>Orielé / Solstice ’26</span></div><div className="hero__copy"><span className="hero__rating"><Sparkles size={13} strokeWidth={1.1} /> The Solstice Edition</span><h1>Objects of a<br />well-kept summer.</h1><p>Small gold rituals, made to meet every improbable plan.</p><div className="hero__actions"><Link href="/collections/sola" className="button button--light">Shop Solstice</Link><Link href="/collections/bridal" className="button button--ghost">For the occasion</Link></div></div><div className="hero__index"><span>01</span><i /><span>05</span></div></section>
+    <Rail eyebrow="Just arrived" title="Ebb & Ember" copy="A limited collection shaped by shade, stone and the first hour of evening." items={pieces.slice(0, 4)} />
+    <section className="split-collection reveal"><Link href="/collections/sola" className="split-collection__visual split-collection__visual--left"><img src="/manus-storage/oriele-editorial-sunroom_794fa073.jpg" alt="Woman in ivory wearing Orielé jewellery in a limestone sunroom" /><span>Necklaces & chains <MoveUpRight size={17} strokeWidth={1.4} /></span></Link><Link href="/collections/sola" className="split-collection__visual split-collection__visual--right"><img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=1600&q=90" alt="Gold jewellery arranged as a still life" /><span>Rings & small things <MoveUpRight size={17} strokeWidth={1.4} /></span></Link><div className="split-collection__caption"><span className="sun-star-divider" aria-hidden="true">✦</span><span className="eyebrow">A small observance</span><h2>Light, held close.</h2><p>Fine chains, tactile pearls and softly irregular forms made for days that ask a little more of you.</p><Link href="/collections/sola" className="text-link">See all pieces <MoveUpRight size={16} strokeWidth={1.4} /></Link></div></section>
+    <Rail eyebrow="Made to keep" title="The familiar pieces" copy="The ones you reach for without looking; the ones that hold their own." items={pieces.slice(4, 8)} />
+    <section className="craft-band"><div><b>01</b><h3>Small runs</h3><p>Considered quantities, paced with the studio.</p></div><div><b>02</b><h3>Made to return to</h3><p>Materials selected for regular, real-world wear.</p></div><div><b>03</b><h3>Wrapped simply</h3><p>Every piece arrives ready to give, keep or carry.</p></div></section>
+    <section className="occasion-callout"><div className="occasion-callout__content"><span className="eyebrow">The occasion edit</span><h2>For the days<br />that become stories.</h2><p>Not only bridal. Pieces for a late train, a quiet ceremony, and every table you planned your outfit for.</p><Link href="/collections/bridal" className="button button--ink">Meet the occasion edit</Link></div><div className="occasion-callout__image"><img src="https://images.unsplash.com/photo-1611085583191-a3b181a88401?auto=format&fit=crop&w=1400&q=90" alt="Pearl jewellery set against an ivory fabric background" /></div></section>
+    <section className="studio-letter"><div className="studio-letter__mark"><img src="/manus-storage/oriele-orbit-mark_948ea730.png" alt="" /></div><div><span className="eyebrow">Notes from the studio</span><h2>Quiet news, bright objects.</h2><p>Occasional dispatches on new pieces, private viewings and the places that keep the light.</p></div><form onSubmit={(event) => event.preventDefault()}><label className="sr-only" htmlFor="home-email">Email address</label><input id="home-email" type="email" placeholder="Email address" /><button type="submit">Keep me close <ArrowRight size={17} strokeWidth={1.4} /></button></form></section>
+  </>;
 }

@@ -1,42 +1,13 @@
-import { Toaster } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import NotFound from "@/pages/NotFound";
+/** Orielé visual system: original luxury storefront routes, built around a translucent editoral header and commerce-first pacing. */
 import { Route, Switch } from "wouter";
-import ErrorBoundary from "./components/ErrorBoundary";
-import { ThemeProvider } from "./contexts/ThemeContext";
-import Home from "./pages/Home";
-
-
-function Router() {
-  return (
-    <Switch>
-      <Route path={"/"} component={Home} />
-      <Route path={"/404"} component={NotFound} />
-      {/* Final fallback route */}
-      <Route component={NotFound} />
-    </Switch>
-  );
-}
-
-// NOTE: About Theme
-// - First choose a default theme according to your design style (dark or light bg), than change color palette in index.css
-//   to keep consistent foreground/background color across components
-// - If you want to make theme switchable, pass `switchable` ThemeProvider and use `useTheme` hook
+import BrandShell from "@/components/BrandShell";
+import Collection, { OccasionCollection } from "@/pages/Collection";
+import Home from "@/pages/Home";
+import Product from "@/pages/Product";
+import Story from "@/pages/Story";
 
 function App() {
-  return (
-    <ErrorBoundary>
-      <ThemeProvider
-        defaultTheme="light"
-        // switchable
-      >
-        <TooltipProvider>
-          <Toaster />
-          <Router />
-        </TooltipProvider>
-      </ThemeProvider>
-    </ErrorBoundary>
-  );
+  return <BrandShell><Switch><Route path="/" component={Home} /><Route path="/collections/sola" component={Collection} /><Route path="/collections/bridal" component={OccasionCollection} /><Route path="/products/:slug" component={Product} /><Route path="/pages/our-story" component={Story} /><Route component={Home} /></Switch></BrandShell>;
 }
 
 export default App;
