@@ -2,6 +2,7 @@
 export type Piece = {
   slug: string;
   name: string;
+  category?: "ring" | "necklace" | "earrings" | "bracelet";
   material: string;
   price: string;
   badge?: string;
@@ -31,6 +32,7 @@ export const pieces: Piece[] = [
   {
     slug: "solis-ridge-ring",
     name: "Solis Ridge Ring",
+    category: "ring",
     material: "Recycled silver · 18k plate",
     price: "£82",
     image: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?auto=format&fit=crop&w=1100&q=85",

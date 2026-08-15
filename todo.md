@@ -3,3 +3,6 @@
 - [x] Replace the saffron accent with a quieter mineral accent and revise related UI treatments.
 - [x] Add smooth scrolling and premium micro-interaction behaviours with reduced-motion support.
 - [x] Build, verify desktop and mobile views, then checkpoint the refinement.
+- [x] Identify the ring records and the existing product disclosure insertion point.
+- [x] Add an original Orielé Ring Size Guide with a conversion table and measurement instructions.
+- [x] Render the guide only for ring products and verify its responsive presentation.
