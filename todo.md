@@ -6,3 +6,9 @@
 - [x] Identify the ring records and the existing product disclosure insertion point.
 - [x] Add an original Orielé Ring Size Guide with a conversion table and measurement instructions.
 - [x] Render the guide only for ring products and verify its responsive presentation.
+- [ ] Locate active customer-facing Orielé brand references and metadata.
+- [ ] Replace the storefront’s wordmark, identity labels, product messages, and page metadata with Velaune.
+- [ ] Verify the Velaune rebrand across desktop and mobile routes.
+- [x] Inspect the interrupted rebrand state and identify the active storefront name.
+- [x] Apply the provisional Golden Hour wordmark with a premium LONDON subline.
+- [x] Verify the Golden Hour lockup across desktop and mobile views.

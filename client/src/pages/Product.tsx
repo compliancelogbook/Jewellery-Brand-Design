@@ -1,4 +1,4 @@
-/** Orielé visual system: asymmetric media mosaic paired with a calm, sticky purchase-panel hierarchy. */
+/** Golden Hour visual system: asymmetric media mosaic paired with a calm, sticky purchase-panel hierarchy. */
 import { Check, Heart, Minus, Plus, Share2 } from "lucide-react";
 import { useState } from "react";
 import { Link, useParams } from "wouter";

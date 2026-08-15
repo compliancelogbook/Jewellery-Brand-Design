@@ -1,4 +1,4 @@
-/** Orielé visual system: Mediterranean Keepsake Modernism — original product content only. */
+/** Golden Hour visual system: Mediterranean Keepsake Modernism — original product content only. */
 export type Piece = {
   slug: string;
   name: string;

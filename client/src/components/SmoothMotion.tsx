@@ -1,4 +1,4 @@
-/** Orielé motion system: damped Lenis scroll, quiet progress wayfinding, and restrained pointer-responsive controls. */
+/** Golden Hour motion system: damped Lenis scroll, quiet progress wayfinding, and restrained pointer-responsive controls. */
 import Lenis from "lenis";
 import { useEffect, useRef, type ReactNode } from "react";
 

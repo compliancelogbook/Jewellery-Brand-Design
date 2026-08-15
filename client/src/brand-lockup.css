@@ -1,0 +1,39 @@
+/* Golden Hour lockup: fashion-house wordmark with a deliberately small, tracked LONDON subline. */
+.wordmark {
+  font-size:unset;
+  text-shadow:none;
+}
+
+.wordmark__lockup {
+  display:grid;
+  gap:3px;
+}
+
+.wordmark__name {
+  font-family:var(--serif);
+  font-size:29px;
+  letter-spacing:-.04em;
+  line-height:.84;
+  white-space:nowrap;
+}
+
+.wordmark em {
+  border-left:0;
+  padding-left:2px;
+  font-family:var(--sans);
+  font-size:7px;
+  line-height:1;
+  letter-spacing:.28em;
+  opacity:.83;
+}
+
+.site-footer .wordmark__name { font-size:32px; }
+
+.product-buy:before {
+  content:"✦  GOLDEN HOUR · LONDON";
+}
+
+@media (max-width:540px) {
+  .wordmark__name { font-size:23px; }
+  .wordmark em { display:block; font-size:6px; letter-spacing:.22em; }
+}
