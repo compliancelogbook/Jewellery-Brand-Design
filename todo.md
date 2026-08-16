@@ -21,3 +21,8 @@
 - [x] Trace the remaining top-page gap to its header or page-layout offset.
 - [x] Remove the surplus navigation offset without changing the intended header treatment.
 - [x] Verify the header is flush on desktop and mobile home and product routes.
+- [x] Review the current catalogue and collection-routing model.
+- [x] Create the three requested editorial edits and Bridal sub-collections, including mother-of-pearl products.
+- [x] Connect the new collection routes to the collection page and navigation paths.
+- [x] Add editorial support content for low-count sub-collections to preserve the collection-page rhythm.
+- [x] Verify all new edit routes on desktop and mobile.

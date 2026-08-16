@@ -5,9 +5,9 @@ import { Link, useLocation } from "wouter";
 
 const nav = [
   { label: "New: Solstice", href: "/collections/sola" },
-  { label: "Jewellery", href: "/collections/sola" },
-  { label: "Pearls", href: "/collections/sola" },
-  { label: "For the occasion", href: "/collections/bridal" },
+  { label: "The Bridal Edit", href: "/collections/bridal" },
+  { label: "Chic Happens", href: "/collections/chic-happens" },
+  { label: "Old Money", href: "/collections/old-money-minimalist" },
   { label: "The studio", href: "/pages/our-story" },
 ];
 
