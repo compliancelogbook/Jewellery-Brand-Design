@@ -43,4 +43,8 @@
 - [x] Review the existing account icon and route configuration.
 - [x] Add a Golden Hour sign-in and create-account entry page and activate the account icon.
 - [x] Verify the account experience on desktop and mobile while keeping authentication explicitly as a future integration.
+- [x] Review existing product card, header, and account components for favourites integration.
+- [x] Add browser-persistent saved pieces and heart controls on product cards and product pages.
+- [x] Build the favourites drawer, desktop/mobile navigation controls, and a cross-device account invitation.
+- [x] Verify favourites persistence and the new heart controls across desktop and mobile.
 - [x] Verify all new edit routes on desktop and mobile.

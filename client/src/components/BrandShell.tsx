@@ -1,9 +1,11 @@
 /** Golden Hour visual system: translucent editorial header, precise utility navigation, deep-ink footer. */
-import { Menu, Search, ShoppingBag, UserRound, X } from "lucide-react";
+import { Heart, Menu, Search, ShoppingBag, UserRound, X } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
 import { Link, useLocation } from "wouter";
 import CartDrawer from "@/components/CartDrawer";
 import { useCart } from "@/contexts/CartContext";
+import FavouritesDrawer from "@/components/FavouritesDrawer";
+import { useFavourites } from "@/contexts/FavouritesContext";
 
 const nav = [
   { label: "New: Solstice", href: "/collections/sola" },
@@ -27,6 +29,7 @@ export default function BrandShell({ children }: { children: ReactNode }) {
   const [isScrolled, setScrolled] = useState(false);
   const isHome = location === "/";
   const { itemCount, openCart } = useCart();
+  const { itemCount: savedCount, openFavourites } = useFavourites();
 
   useEffect(() => {
     const update = () => setScrolled(window.scrollY > 32);
@@ -50,18 +53,20 @@ export default function BrandShell({ children }: { children: ReactNode }) {
         <div className="header-tools">
           <button aria-label="Search the collection"><Search size={18} strokeWidth={1.4} /></button>
           <Link href="/account" aria-label="Account"><UserRound size={18} strokeWidth={1.4} /></Link>
+          <button className="favourites-trigger" onClick={openFavourites} aria-label={`Saved pieces, ${savedCount} items`}><Heart size={19} strokeWidth={1.35} /><sup>{savedCount}</sup></button>
           <button className="shopping-bag-trigger" onClick={openCart} aria-label={`Shopping bag, ${itemCount} items`}><ShoppingBag size={18} strokeWidth={1.4} /><sup>{itemCount}</sup></button>
           <button className="mobile-menu-button" onClick={() => setMenuOpen(true)} aria-label="Open menu"><Menu size={22} strokeWidth={1.4} /></button>
         </div>
       </header>
       <div className={`mobile-menu ${isMenuOpen ? "mobile-menu--open" : ""}`} aria-hidden={!isMenuOpen}>
         <div className="mobile-menu__top"><Link href="/" className="wordmark"><BrandLockup /></Link><button onClick={() => setMenuOpen(false)} aria-label="Close menu"><X size={23} strokeWidth={1.3} /></button></div>
-        <nav aria-label="Mobile navigation">{nav.map((item) => <Link key={item.label} href={item.href}>{item.label}</Link>)}<Link href="/account">My account</Link></nav>
+        <nav aria-label="Mobile navigation">{nav.map((item) => <Link key={item.label} href={item.href}>{item.label}</Link>)}<Link href="/account">My account</Link></nav><button className="mobile-menu__favourites" onClick={openFavourites}><Heart size={19} strokeWidth={1.35} /> Saved pieces <span>{savedCount}</span></button>
         <p>Jewellery for a well-kept summer.</p>
       </div>
       <main>{children}</main>
       <Footer />
       <CartDrawer />
+      <FavouritesDrawer />
     </div>
   );
 }
