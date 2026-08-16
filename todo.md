@@ -54,4 +54,7 @@
 - [x] Inspect Size Guide hero spacing, headline scale, and mobile width constraints.
 - [x] Separate hero labels, reduce oversized typography, and correct all responsive widths.
 - [x] Verify the Size Guide page has no horizontal overflow at desktop and mobile widths.
+- [x] Inspect the current mobile header and breadcrumb vertical offsets.
+- [x] Increase the mobile breathing zone beneath navigation without shifting the desktop layout.
+- [x] Verify the new breadcrumb spacing on mobile and preserve desktop continuity.
 - [x] Verify all new edit routes on desktop and mobile.
