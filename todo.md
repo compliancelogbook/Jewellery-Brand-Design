@@ -12,3 +12,6 @@
 - [x] Inspect the interrupted rebrand state and identify the active storefront name.
 - [x] Apply the provisional Golden Hour wordmark with a premium LONDON subline.
 - [x] Verify the Golden Hour lockup across desktop and mobile views.
+- [x] Trace product-route scroll retention and the header-to-content spacing calculation.
+- [x] Reset scroll on route changes and remove the unnecessary product-page top gap.
+- [x] Verify a product opened from a lower page position starts at the product top on mobile and desktop.

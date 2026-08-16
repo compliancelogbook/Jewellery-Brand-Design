@@ -1,9 +1,12 @@
 /** Golden Hour motion system: damped Lenis scroll, quiet progress wayfinding, and restrained pointer-responsive controls. */
 import Lenis from "lenis";
-import { useEffect, useRef, type ReactNode } from "react";
+import { useEffect, useLayoutEffect, useRef, type ReactNode } from "react";
+import { useLocation } from "wouter";
 
 export default function SmoothMotion({ children }: { children: ReactNode }) {
   const progressRef = useRef<HTMLDivElement>(null);
+  const lenisRef = useRef<Lenis | null>(null);
+  const [location] = useLocation();
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -14,6 +17,7 @@ export default function SmoothMotion({ children }: { children: ReactNode }) {
       touchMultiplier: 1.05,
       smoothWheel: true,
     });
+    lenisRef.current = lenis;
 
     let frameId = 0;
     const animate = (time: number) => {
@@ -52,9 +56,18 @@ export default function SmoothMotion({ children }: { children: ReactNode }) {
     return () => {
       cancelAnimationFrame(frameId);
       lenis.destroy();
+      lenisRef.current = null;
       cleanups.forEach((cleanup) => cleanup());
     };
   }, []);
+
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    lenisRef.current?.scrollTo(0, { immediate: true, force: true });
+    progressRef.current?.style.setProperty("transform", "scaleX(0)");
+  }, [location]);
 
   return <><div className="scroll-progress" ref={progressRef} aria-hidden="true" />{children}</>;
 }
