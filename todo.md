@@ -18,3 +18,6 @@
 - [x] Verify the US conversion values for the existing UK and inside-diameter ring sizes.
 - [x] Add the verified US size column to the shared Ring Size Guide used by every ring product.
 - [x] Verify the revised sizing table on desktop and mobile ring pages.
+- [x] Trace the remaining top-page gap to its header or page-layout offset.
+- [x] Remove the surplus navigation offset without changing the intended header treatment.
+- [x] Verify the header is flush on desktop and mobile home and product routes.
