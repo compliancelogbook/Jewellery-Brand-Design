@@ -82,7 +82,7 @@ function Footer() {
     <footer className="site-footer">
       <div className="site-footer__identity"><Link href="/" className="wordmark"><BrandLockup /></Link><p>Jewellery for the way you mark a day.</p></div>
       <form className="footer-newsletter" onSubmit={(event) => event.preventDefault()}><label htmlFor="footer-email">Studio letter</label><div><input id="footer-email" type="email" placeholder="Email address" /><button type="submit">Join</button></div></form>
-      <div className="site-footer__links"><div><span>Visit</span><Link href="/collections/sola">The collection</Link><Link href="/collections/bridal">Occasion pieces</Link><Link href="/pages/our-story">The studio</Link></div><div><span>Help</span><Link href="/help/size-guide">Size guide</Link><a href="#delivery">Delivery & returns</a><a href="#care">Care guide</a><a href="mailto:studio@goldenhour.example">Contact us</a></div></div>
+      <div className="site-footer__links"><div><span>Visit</span><Link href="/collections/sola">The collection</Link><Link href="/collections/bridal">Occasion pieces</Link><Link href="/journal">The journal</Link><Link href="/pages/our-story">The studio</Link></div><div><span>Help</span><Link href="/help/size-guide">Size guide</Link><a href="#delivery">Delivery & returns</a><a href="#care">Care guide</a><a href="mailto:studio@goldenhour.example">Contact us</a></div></div>
       <div className="site-footer__fineprint"><span>© 2026 Golden Hour London</span><span>Made with care in the United Kingdom</span><span>Terms · Privacy</span></div>
     </footer>
   );

@@ -68,3 +68,7 @@
 - [x] Add the lace-envelope subscription invitation to the homepage with British-English messaging.
 - [x] Verify the new mailing-list invitation on desktop and mobile.
 - [x] Restore full desktop visibility of the footer copyright and Terms / Privacy fine print.
+- [x] Define the AW/26 journal story architecture and its discrete homepage invitation.
+- [x] Create original editorial imagery and AW/26 jewellery journal content.
+- [x] Build the journal route and add the product-led homepage journal entry point.
+- [x] Verify the journal experience on desktop and mobile.
