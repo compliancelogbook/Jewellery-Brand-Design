@@ -72,3 +72,5 @@
 - [x] Create original editorial imagery and AW/26 jewellery journal content.
 - [x] Build the journal route and add the product-led homepage journal entry point.
 - [x] Verify the journal experience on desktop and mobile.
+- [x] Make the desktop Shop mega-menu display identically over the hero and interior page sections.
+- [x] Verify the Shop panel at the hero and after scrolling.

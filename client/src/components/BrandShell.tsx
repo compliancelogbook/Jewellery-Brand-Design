@@ -47,11 +47,11 @@ export default function BrandShell({ children }: { children: ReactNode }) {
       <div className="shipping-ticker" role="note">
         <div className="shipping-ticker__track"><span>Complimentary UK delivery over £100</span><i /> <span>Jewellery made in small, considered runs</span><i /> <span>Complimentary UK delivery over £100</span></div>
       </div>
-      <header className={`site-header ${isHome && !isScrolled ? "site-header--over" : "site-header--solid"}`}>
+      <header className={`site-header ${isShopOpen ? "site-header--menu-open" : isHome && !isScrolled ? "site-header--over" : "site-header--solid"}`}>
         <Link href="/" className="wordmark" aria-label="Golden Hour home"><BrandLockup /></Link>
         <nav className="desktop-nav" aria-label="Primary navigation">
           <div className="shop-nav-item" onMouseEnter={() => setShopOpen(true)} onMouseLeave={() => setShopOpen(false)} onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget as Node)) setShopOpen(false); }}>
-            <button className="shop-nav-trigger" aria-expanded={isShopOpen} aria-haspopup="true" onClick={() => setShopOpen((current) => !current)} onFocus={() => setShopOpen(true)}>Shop <span>+</span></button>
+            <button className="shop-nav-trigger" aria-expanded={isShopOpen} aria-haspopup="true" onClick={() => setShopOpen(true)} onFocus={() => setShopOpen(true)}>Shop <span>+</span></button>
             <div className={`shop-mega ${isShopOpen ? "shop-mega--open" : ""}`} aria-hidden={!isShopOpen}><div className="shop-mega__inner"><div className="shop-mega__intro"><span className="eyebrow">Shop by category</span><h2>Find the piece<br />that stays close.</h2><p>Browse the collection by the way you wear it.</p></div><div className="shop-mega__links"><span className="eyebrow">The categories</span>{categoryCollections.map((category) => <Link key={category.slug} href={`/shop/${category.slug}`}>{category.title} <span>↗</span></Link>)}<Link className="shop-mega__all" href="/collections/sola">Shop the latest <ArrowRight size={14} strokeWidth={1.4} /></Link></div><Link href="/shop/bridal-accessories" className="shop-mega__feature"><img src="/manus-storage/golden-hour-bridal-accessories-hero_fd3a30d3.jpg" alt="Pearl bridal accessory" /><div><span>For the occasion</span><strong>Bridal Accessories</strong><em>Explore now</em></div></Link></div></div>
           </div>
           {nav.map((item) => <Link key={item.label} href={item.href}>{item.label}</Link>)}
