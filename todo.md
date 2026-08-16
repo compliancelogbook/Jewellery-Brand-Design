@@ -37,4 +37,7 @@
 - [x] Generate original hair-accessory and bridal model close-up campaign visuals from the approved direction.
 - [x] Add new Bridal Accessories pieces using only the generated visuals and preserve every existing image.
 - [x] Verify the expanded Bridal Edit and confirm no pre-existing imagery was removed.
+- [x] Review the existing craft-section markup, placement, and copy without changing it.
+- [x] Add a separate removable Framer Motion parallax-marquee sandbox with refined occasion-to-everyday messaging.
+- [x] Verify sandbox performance and responsive presentation while preserving the original craft section.
 - [x] Verify all new edit routes on desktop and mobile.
