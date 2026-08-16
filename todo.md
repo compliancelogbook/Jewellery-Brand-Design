@@ -64,3 +64,6 @@
 - [x] Verify all new edit routes on desktop and mobile.
 - [x] Remove the redundant footer Assistance column while retaining Help.
 - [x] Remove the separate CraftSandbox prototype from the homepage.
+- [x] Create an original Chantilly lace envelope visual for the Golden Hour mailing list.
+- [x] Add the lace-envelope subscription invitation to the homepage with British-English messaging.
+- [x] Verify the new mailing-list invitation on desktop and mobile.
