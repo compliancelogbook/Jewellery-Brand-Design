@@ -2,6 +2,8 @@
 import { Menu, Search, ShoppingBag, UserRound, X } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
 import { Link, useLocation } from "wouter";
+import CartDrawer from "@/components/CartDrawer";
+import { useCart } from "@/contexts/CartContext";
 
 const nav = [
   { label: "New: Solstice", href: "/collections/sola" },
@@ -24,6 +26,7 @@ export default function BrandShell({ children }: { children: ReactNode }) {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setScrolled] = useState(false);
   const isHome = location === "/";
+  const { itemCount, openCart } = useCart();
 
   useEffect(() => {
     const update = () => setScrolled(window.scrollY > 32);
@@ -47,7 +50,7 @@ export default function BrandShell({ children }: { children: ReactNode }) {
         <div className="header-tools">
           <button aria-label="Search the collection"><Search size={18} strokeWidth={1.4} /></button>
           <button aria-label="Account"><UserRound size={18} strokeWidth={1.4} /></button>
-          <Link href="/collections/sola" aria-label="Shopping bag"><ShoppingBag size={18} strokeWidth={1.4} /><sup>0</sup></Link>
+          <button className="shopping-bag-trigger" onClick={openCart} aria-label={`Shopping bag, ${itemCount} items`}><ShoppingBag size={18} strokeWidth={1.4} /><sup>{itemCount}</sup></button>
           <button className="mobile-menu-button" onClick={() => setMenuOpen(true)} aria-label="Open menu"><Menu size={22} strokeWidth={1.4} /></button>
         </div>
       </header>
@@ -58,6 +61,7 @@ export default function BrandShell({ children }: { children: ReactNode }) {
       </div>
       <main>{children}</main>
       <Footer />
+      <CartDrawer />
     </div>
   );
 }

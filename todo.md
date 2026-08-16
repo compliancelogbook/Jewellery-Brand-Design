@@ -25,4 +25,8 @@
 - [x] Create the three requested editorial edits and Bridal sub-collections, including mother-of-pearl products.
 - [x] Connect the new collection routes to the collection page and navigation paths.
 - [x] Add editorial support content for low-count sub-collections to preserve the collection-page rhythm.
+- [x] Review product actions, navigation controls, and styling primitives for cart integration.
+- [x] Add persistent client-side cart state and connect all product add actions.
+- [x] Build the Golden Hour shopping-bag drawer with line items, quantity controls, removal, and subtotal.
+- [x] Verify cart persistence and responsive bag behaviour across product and collection routes.
 - [x] Verify all new edit routes on desktop and mobile.
