@@ -29,4 +29,12 @@
 - [x] Add persistent client-side cart state and connect all product add actions.
 - [x] Build the Golden Hour shopping-bag drawer with line items, quantity controls, removal, and subtotal.
 - [x] Verify cart persistence and responsive bag behaviour across product and collection routes.
+- [ ] Audit all remaining external and generated image references by page placement.
+- [ ] Generate a varied original Golden Hour campaign set for models, product stories, and collection heroes.
+- [ ] Replace all third-party stock links and add a GitHub-tracked asset-provenance manifest.
+- [x] Verify every primary route uses only original generated or existing owned asset references.
+- [x] Add Bridal Accessories as the fifth Bridal Edit chapter without changing existing image references.
+- [x] Generate original hair-accessory and bridal model close-up campaign visuals from the approved direction.
+- [x] Add new Bridal Accessories pieces using only the generated visuals and preserve every existing image.
+- [x] Verify the expanded Bridal Edit and confirm no pre-existing imagery was removed.
 - [x] Verify all new edit routes on desktop and mobile.
