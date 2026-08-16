@@ -67,3 +67,4 @@
 - [x] Create an original Chantilly lace envelope visual for the Golden Hour mailing list.
 - [x] Add the lace-envelope subscription invitation to the homepage with British-English messaging.
 - [x] Verify the new mailing-list invitation on desktop and mobile.
+- [x] Restore full desktop visibility of the footer copyright and Terms / Privacy fine print.
