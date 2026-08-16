@@ -12,6 +12,8 @@ export type Piece = {
 };
 
 export type EditSlug = "sola" | "bridal" | "something-blue" | "mother-of-the-bride" | "say-i-do" | "bridal-accessories" | "chic-happens" | "old-money-minimalist";
+export type CategorySlug = "rings" | "earrings" | "necklaces" | "bracelets" | "bridal-accessories";
+export type CategoryCollection = { slug: CategorySlug; type: NonNullable<Piece["category"]>; title: string; eyebrow: string; subtitle: string; image: string; featureImage: string };
 
 export type CollectionEdit = {
   slug: EditSlug;
@@ -33,10 +35,19 @@ export const collectionEdits: CollectionEdit[] = [
   { slug: "old-money-minimalist", title: "Old Money Minimalist", eyebrow: "The wardrobe edit", subtitle: "Clean lines, softened metals and the pieces you wear often enough to forget they are there.", image: "https://images.unsplash.com/photo-1589128777073-263566ae5e4d?auto=format&fit=crop&w=1600&q=90" },
 ];
 
+export const categoryCollections: CategoryCollection[] = [
+  { slug: "rings", type: "ring", title: "Rings", eyebrow: "Shop by category", subtitle: "Sculpted bands and small declarations, designed to become part of your hands’ story.", image: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?auto=format&fit=crop&w=1600&q=90", featureImage: "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?auto=format&fit=crop&w=1000&q=90" },
+  { slug: "earrings", type: "earrings", title: "Earrings", eyebrow: "Shop by category", subtitle: "A quiet movement of pearl, gold and light, made to catch the room without asking for it.", image: "/manus-storage/golden-hour-bridal-earring-closeup_19c54fe5.jpg", featureImage: "/manus-storage/golden-hour-evening-bridal-model_1eaa752e.jpg" },
+  { slug: "necklaces", type: "necklace", title: "Necklaces", eyebrow: "Shop by category", subtitle: "Fine chains and luminous pendants for the open collar, the everyday shirt and the late table.", image: "/manus-storage/oriele-product-aurora-disc_f884f487.jpg", featureImage: "/manus-storage/oriele-editorial-sunroom_794fa073.jpg" },
+  { slug: "bracelets", type: "bracelet", title: "Bracelets", eyebrow: "Shop by category", subtitle: "Easy pieces to stack, layer and live in, each with a softly considered finish.", image: "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?auto=format&fit=crop&w=1600&q=90", featureImage: "https://images.unsplash.com/photo-1589128777073-263566ae5e4d?auto=format&fit=crop&w=1000&q=90" },
+  { slug: "bridal-accessories", type: "accessory", title: "Bridal Accessories", eyebrow: "Shop by category", subtitle: "Pearl hair pieces and luminous finishing touches for promises, photographs and every moment in between.", image: "/manus-storage/golden-hour-bridal-accessories-hero_fd3a30d3.jpg", featureImage: "/manus-storage/golden-hour-pearl-hair-pin_b52e5475.jpg" },
+];
+
 export const pieces: Piece[] = [
   {
     slug: "aurora-disc-pendant",
     name: "Aurora Disc Pendant",
+    category: "necklace",
     edits: ["sola", "chic-happens"],
     material: "Gold vermeil · amber glass",
     price: "£118",
@@ -47,6 +58,7 @@ export const pieces: Piece[] = [
   {
     slug: "pearl-orbit-drop",
     name: "Pearl Orbit Drops",
+    category: "earrings",
     edits: ["sola", "bridal", "mother-of-the-bride"],
     material: "Gold vermeil · freshwater pearl",
     price: "£94",
@@ -67,6 +79,7 @@ export const pieces: Piece[] = [
   {
     slug: "tide-thread-chain",
     name: "Tide Thread Chain",
+    category: "necklace",
     edits: ["sola", "chic-happens"],
     material: "Gold vermeil · hand-finished",
     price: "£136",
@@ -76,6 +89,7 @@ export const pieces: Piece[] = [
   {
     slug: "lumen-pearl-collar",
     name: "Lumen Pearl Collar",
+    category: "necklace",
     edits: ["bridal", "mother-of-the-bride"],
     material: "Freshwater pearl · silk cord",
     price: "£152",
@@ -85,6 +99,7 @@ export const pieces: Piece[] = [
   {
     slug: "citrus-stud-set",
     name: "Citrus Stud Set",
+    category: "earrings",
     edits: ["chic-happens"],
     material: "Gold vermeil · citrine glass",
     price: "£68",
@@ -95,6 +110,7 @@ export const pieces: Piece[] = [
   {
     slug: "rivulet-cuff",
     name: "Rivulet Cuff",
+    category: "bracelet",
     edits: ["chic-happens", "old-money-minimalist"],
     material: "Recycled silver · hand-formed",
     price: "£109",
@@ -104,6 +120,7 @@ export const pieces: Piece[] = [
   {
     slug: "marea-chainlet",
     name: "Marea Chainlet",
+    category: "bracelet",
     edits: ["sola", "old-money-minimalist"],
     material: "Gold vermeil · adjustable",
     price: "£74",
@@ -230,3 +247,5 @@ export const pieces: Piece[] = [
 export const findPiece = (slug: string) => pieces.find((piece) => piece.slug === slug) ?? pieces[0];
 export const getEdit = (slug: string) => collectionEdits.find((edit) => edit.slug === slug) ?? collectionEdits[0];
 export const piecesForEdit = (slug: EditSlug) => slug === "bridal" ? pieces.filter((piece) => piece.edits.includes("bridal") || piece.edits.some((edit) => ["something-blue", "mother-of-the-bride", "say-i-do", "bridal-accessories"].includes(edit))) : pieces.filter((piece) => piece.edits.includes(slug));
+export const getCategory = (slug: string) => categoryCollections.find((category) => category.slug === slug) ?? categoryCollections[0];
+export const piecesForCategory = (slug: CategorySlug) => pieces.filter((piece) => piece.category === getCategory(slug).type);

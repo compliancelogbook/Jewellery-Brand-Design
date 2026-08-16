@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { Link } from "wouter";
 import CraftSandbox from "@/components/CraftSandbox";
 import ProductCard from "@/components/ProductCard";
-import { pieces } from "../data/catalog";
+import { categoryCollections, pieces } from "../data/catalog";
 
 function Rail({ eyebrow, title, copy, items }: { eyebrow?: string; title: string; copy: string; items: typeof pieces }) {
   const rail = useRef<HTMLDivElement>(null);
@@ -12,10 +12,17 @@ function Rail({ eyebrow, title, copy, items }: { eyebrow?: string; title: string
   return <section className="product-rail reveal"><div className="product-rail__intro"><div>{eyebrow && <span className="eyebrow">{eyebrow}</span>}<h2>{title}</h2><p>{copy}</p></div><div className="rail-controls"><button data-magnetic onClick={() => shift(-1)} aria-label={`Previous ${title} pieces`}><ArrowLeft size={19} strokeWidth={1.2} /></button><button data-magnetic onClick={() => shift(1)} aria-label={`Next ${title} pieces`}><ArrowRight size={19} strokeWidth={1.2} /></button></div></div><div className="product-rail__track" ref={rail}>{items.map((piece) => <ProductCard key={piece.slug} piece={piece} />)}</div><Link href="/collections/sola" className="text-link">Explore the collection <MoveUpRight size={16} strokeWidth={1.4} /></Link></section>;
 }
 
+function CategoryRail() {
+  const rail = useRef<HTMLDivElement>(null);
+  const shift = (direction: number) => rail.current?.scrollBy({ left: direction * (rail.current.clientWidth * 0.72), behavior: "smooth" });
+  return <section className="shop-category-rail"><div className="shop-category-rail__header"><div><span className="eyebrow">Shop with intention</span><h2>Shop by <em>category.</em></h2><p>Start with the piece you have in mind, then make it your own.</p></div><div className="rail-controls"><button onClick={() => shift(-1)} aria-label="Previous categories"><ArrowLeft size={19} strokeWidth={1.2} /></button><button onClick={() => shift(1)} aria-label="Next categories"><ArrowRight size={19} strokeWidth={1.2} /></button></div></div><div className="shop-category-rail__track" ref={rail}>{categoryCollections.map((category) => <Link key={category.slug} href={`/shop/${category.slug}`} className="shop-category-card"><img src={category.image} alt="" /><span>{category.title}</span><i><MoveUpRight size={16} strokeWidth={1.4} /></i></Link>)}</div><Link href="/shop/rings" className="text-link">Browse all categories <MoveUpRight size={15} strokeWidth={1.4} /></Link></section>;
+}
+
 export default function Home() {
   return <>
     <section className="hero"><img src="/manus-storage/oriele-hero-mediterranean-tide_8af5f0e5.jpg" alt="Deep teal Mediterranean water moving around a pale limestone shore" /><div className="hero__veil" /><div className="hero__signature"><img src="/manus-storage/oriele-orbit-mark_948ea730.png" alt="" /><span>Golden Hour / Solstice ’26</span></div><div className="hero__copy"><span className="hero__rating"><Sparkles size={13} strokeWidth={1.1} /> The Solstice Edition</span><h1>Jewellery for a<br />well-kept summer.</h1><p>Small rituals in gold, made to meet every improbable plan.</p><div className="hero__actions"><Link href="/collections/sola" className="button button--light" data-magnetic>Shop Solstice</Link><Link href="/collections/bridal" className="button button--ghost" data-magnetic>For the occasion</Link></div></div><div className="hero__index"><span>01</span><i /><span>05</span></div></section>
     <Rail eyebrow="Just arrived" title="Ebb & Ember" copy="A limited collection shaped by shade, stone and the first hour of evening." items={pieces.slice(0, 4)} />
+    <CategoryRail />
     <section className="split-collection reveal"><Link href="/collections/sola" className="split-collection__visual split-collection__visual--left"><img src="/manus-storage/oriele-editorial-sunroom_794fa073.jpg" alt="Woman in ivory wearing Golden Hour jewellery in a limestone sunroom" /><span>Necklaces & chains <MoveUpRight size={17} strokeWidth={1.4} /></span></Link><Link href="/collections/sola" className="split-collection__visual split-collection__visual--right"><img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=1600&q=90" alt="Gold jewellery arranged as a still life" /><span>Rings & small things <MoveUpRight size={17} strokeWidth={1.4} /></span></Link><div className="split-collection__caption"><span className="sun-star-divider" aria-hidden="true">✦</span><span className="eyebrow">A small observance</span><h2>Light, held close.</h2><p>Fine chains, tactile pearls and softly irregular forms made for days that ask a little more of you.</p><Link href="/collections/sola" className="text-link">See all pieces <MoveUpRight size={16} strokeWidth={1.4} /></Link></div></section>
     <Rail eyebrow="Made to keep" title="The familiar pieces" copy="The ones you reach for without looking; the ones that hold their own." items={pieces.slice(4, 8)} />
     <section className="craft-band"><div><b>01</b><h3>Small runs</h3><p>Considered quantities, paced with the studio.</p></div><div><b>02</b><h3>Made to return to</h3><p>Materials selected for regular, real-world wear.</p></div><div><b>03</b><h3>Wrapped simply</h3><p>Every piece arrives ready to give, keep or carry.</p></div></section>

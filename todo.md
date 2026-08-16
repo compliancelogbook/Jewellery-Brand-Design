@@ -57,4 +57,8 @@
 - [x] Inspect the current mobile header and breadcrumb vertical offsets.
 - [x] Increase the mobile breathing zone beneath navigation without shifting the desktop layout.
 - [x] Verify the new breadcrumb spacing on mobile and preserve desktop continuity.
+- [x] Review category assignments, header navigation, and reusable category visuals.
+- [x] Add category-filtered collection routes for Rings, Earrings, Necklaces, Bracelets, and Bridal Accessories.
+- [x] Build the desktop Shop mega-menu, mobile category access, and homepage Shop by Category rail.
+- [x] Verify desktop hover/focus, mobile navigation, and all category routes.
 - [x] Verify all new edit routes on desktop and mobile.
