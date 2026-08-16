@@ -47,4 +47,8 @@
 - [x] Add browser-persistent saved pieces and heart controls on product cards and product pages.
 - [x] Build the favourites drawer, desktop/mobile navigation controls, and a cross-device account invitation.
 - [x] Verify favourites persistence and the new heart controls across desktop and mobile.
+- [x] Review the footer structure and existing reusable ring-size-guide component.
+- [x] Add a Help footer group and a standalone Size Guide route with the verified sizing table.
+- [x] Add a refined customer-support contact panel and appropriate supporting help links.
+- [x] Verify Help and Size Guide routes on desktop and mobile.
 - [x] Verify all new edit routes on desktop and mobile.

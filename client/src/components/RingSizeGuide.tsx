@@ -7,9 +7,9 @@ const sizeRows = [
   { size: "XL", uk: "Q½", diameter: "18.5 mm", us: "8½", eu: "58" },
 ];
 
-export default function RingSizeGuide() {
+export default function RingSizeGuide({ expanded = false, standalone = false }: { expanded?: boolean; standalone?: boolean }) {
   return (
-    <details className="ring-size-guide">
+    <details className={`ring-size-guide ${standalone ? "ring-size-guide--standalone" : ""}`} open={expanded}>
       <summary><span>Ring Size Guide</span><span>+</span></summary>
       <div className="ring-size-guide__content">
         <div className="ring-size-guide__intro"><span className="ring-size-guide__mark">◌</span><div><span className="eyebrow">Golden Hour fit notes</span><p>Choose your usual size or use the inside diameter of a ring you already wear comfortably.</p></div></div>
