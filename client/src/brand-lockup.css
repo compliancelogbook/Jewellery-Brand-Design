@@ -37,3 +37,5 @@
   .wordmark__name { font-size:23px; }
   .wordmark em { display:block; font-size:6px; letter-spacing:.22em; }
 }
+
+.ring-size-guide table { min-width:400px; }

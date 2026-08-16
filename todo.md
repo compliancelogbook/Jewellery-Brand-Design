@@ -15,3 +15,6 @@
 - [x] Trace product-route scroll retention and the header-to-content spacing calculation.
 - [x] Reset scroll on route changes and remove the unnecessary product-page top gap.
 - [x] Verify a product opened from a lower page position starts at the product top on mobile and desktop.
+- [x] Verify the US conversion values for the existing UK and inside-diameter ring sizes.
+- [x] Add the verified US size column to the shared Ring Size Guide used by every ring product.
+- [x] Verify the revised sizing table on desktop and mobile ring pages.
