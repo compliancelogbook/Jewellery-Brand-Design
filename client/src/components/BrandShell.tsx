@@ -49,14 +49,14 @@ export default function BrandShell({ children }: { children: ReactNode }) {
         </nav>
         <div className="header-tools">
           <button aria-label="Search the collection"><Search size={18} strokeWidth={1.4} /></button>
-          <button aria-label="Account"><UserRound size={18} strokeWidth={1.4} /></button>
+          <Link href="/account" aria-label="Account"><UserRound size={18} strokeWidth={1.4} /></Link>
           <button className="shopping-bag-trigger" onClick={openCart} aria-label={`Shopping bag, ${itemCount} items`}><ShoppingBag size={18} strokeWidth={1.4} /><sup>{itemCount}</sup></button>
           <button className="mobile-menu-button" onClick={() => setMenuOpen(true)} aria-label="Open menu"><Menu size={22} strokeWidth={1.4} /></button>
         </div>
       </header>
       <div className={`mobile-menu ${isMenuOpen ? "mobile-menu--open" : ""}`} aria-hidden={!isMenuOpen}>
         <div className="mobile-menu__top"><Link href="/" className="wordmark"><BrandLockup /></Link><button onClick={() => setMenuOpen(false)} aria-label="Close menu"><X size={23} strokeWidth={1.3} /></button></div>
-        <nav aria-label="Mobile navigation">{nav.map((item) => <Link key={item.label} href={item.href}>{item.label}</Link>)}</nav>
+        <nav aria-label="Mobile navigation">{nav.map((item) => <Link key={item.label} href={item.href}>{item.label}</Link>)}<Link href="/account">My account</Link></nav>
         <p>Jewellery for a well-kept summer.</p>
       </div>
       <main>{children}</main>

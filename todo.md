@@ -40,4 +40,7 @@
 - [x] Review the existing craft-section markup, placement, and copy without changing it.
 - [x] Add a separate removable Framer Motion parallax-marquee sandbox with refined occasion-to-everyday messaging.
 - [x] Verify sandbox performance and responsive presentation while preserving the original craft section.
+- [x] Review the existing account icon and route configuration.
+- [x] Add a Golden Hour sign-in and create-account entry page and activate the account icon.
+- [x] Verify the account experience on desktop and mobile while keeping authentication explicitly as a future integration.
 - [x] Verify all new edit routes on desktop and mobile.
