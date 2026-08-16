@@ -51,4 +51,7 @@
 - [x] Add a Help footer group and a standalone Size Guide route with the verified sizing table.
 - [x] Add a refined customer-support contact panel and appropriate supporting help links.
 - [x] Verify Help and Size Guide routes on desktop and mobile.
+- [x] Inspect Size Guide hero spacing, headline scale, and mobile width constraints.
+- [x] Separate hero labels, reduce oversized typography, and correct all responsive widths.
+- [x] Verify the Size Guide page has no horizontal overflow at desktop and mobile widths.
 - [x] Verify all new edit routes on desktop and mobile.
