@@ -62,3 +62,5 @@
 - [x] Build the desktop Shop mega-menu, mobile category access, and homepage Shop by Category rail.
 - [x] Verify desktop hover/focus, mobile navigation, and all category routes.
 - [x] Verify all new edit routes on desktop and mobile.
+- [x] Remove the redundant footer Assistance column while retaining Help.
+- [x] Remove the separate CraftSandbox prototype from the homepage.
