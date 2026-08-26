@@ -9,7 +9,9 @@ export type Piece = {
   badge?: string;
   image: string;
   alternateImage: string;
+  tertiaryImage?: string;
   description?: string;
+  singleFinish?: boolean;
 };
 
 export type EditSlug = "sola" | "bridal" | "something-blue" | "mother-of-the-bride" | "say-i-do" | "bridal-accessories" | "chic-happens" | "old-money-minimalist" | "christmas";
@@ -66,8 +68,10 @@ export const pieces: Piece[] = [
     price: "£54",
     badge: "Limited edition",
     description: "A softly sculpted reindeer with a wink of red crystal for a nose — a small, cheerful stud for the last stretch of December.",
-    image: "https://res.cloudinary.com/dnp0sgoad/image/upload/v1787767299/reindeer-crystal-red-nose-studs-head-on-master-concept-v2.png",
-    alternateImage: "https://res.cloudinary.com/dnp0sgoad/image/upload/v1787767144/reindeer-crystal-red-nose-studs-on-model-ear-macro-concept-v1.png",
+    singleFinish: true,
+    image: "https://res.cloudinary.com/dnp0sgoad/image/upload/v1787767144/reindeer-crystal-red-nose-studs-on-model-ear-macro-concept-v1.png",
+    alternateImage: "https://res.cloudinary.com/dnp0sgoad/image/upload/v1787767299/reindeer-crystal-red-nose-studs-head-on-master-concept-v2.png",
+    tertiaryImage: "https://res.cloudinary.com/dnp0sgoad/image/upload/v1787767314/reindeer-crystal-red-nose-studs-staged-master-concept-v1.png",
   },
   {
     slug: "vesper-pearl-drops",
@@ -79,7 +83,7 @@ export const pieces: Piece[] = [
     badge: "Signature piece",
     description: "A pear-cut solitaire meets a lustrous South Sea pearl in a quiet study of contrast — one bright edge, one soft weight, for the walk down the aisle and every ordinary morning after.",
     image: "https://res.cloudinary.com/dnp0sgoad/image/upload/v1787388121/pear-pearl-studs-house-model-02-approved-v1_pcbl74.png",
-    alternateImage: "https://res.cloudinary.com/dnp0sgoad/image/upload/v1787388121/pear-pearl-studs-house-model-02-approved-v1_pcbl74.png",
+    alternateImage: "https://res.cloudinary.com/dnp0sgoad/image/upload/v1787767442/Gold-Tone_Pear-Shaped_Stone_Pearl-Effect_Drop_Stud_Earrings.png",
   },
   {
     slug: "pearl-orbit-drop",

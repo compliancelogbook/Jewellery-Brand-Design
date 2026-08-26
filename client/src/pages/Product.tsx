@@ -22,17 +22,17 @@ export default function Product() {
     <section className="product-page">
       <div className="product-page__crumb"><Link href="/">Home</Link><span>/</span><Link href="/collections/sola">Jewellery</Link><span>/</span><span>{piece.name}</span></div>
       <div className="product-page__layout">
-        <div className="product-media">
+        <div className="product-media" data-slug={piece.slug}>
           <img src={piece.image} alt={piece.name} />
           <img src={piece.alternateImage} alt={`${piece.name} alternate view`} />
-          <img src="/manus-storage/oriele-editorial-sunroom_794fa073.jpg" alt="Jewellery styled in a quiet limestone sunroom" />
+          <img src={piece.tertiaryImage ?? "/manus-storage/oriele-editorial-sunroom_794fa073.jpg"} alt={piece.tertiaryImage ? `${piece.name} styled view` : "Jewellery styled in a quiet limestone sunroom"} />
           <div className="product-media__video"><span>Studio material study</span><i>◌</i></div>
         </div>
         <aside className="product-buy">
           <span className="product-card__badge">{piece.badge ?? "Studio piece"}</span>
           <h1>{piece.name}</h1><p className="product-buy__material">{piece.material}</p><strong className="product-buy__price">{piece.price}</strong>
           <p className="product-buy__intro">{piece.description ?? (isRing ? "A softly sculpted ring, designed for everyday light and an easy, tactile fit." : "A sun-shaped pendant, designed in the studio to catch light without asking for it.")}</p>
-          <fieldset className="product-buy__options"><legend>Finish</legend><button className="finish-swatch finish-swatch--selected" aria-label="Gold vermeil finish" /><button className="finish-swatch finish-swatch--silver" aria-label="Sterling silver finish" /></fieldset>
+          <fieldset className="product-buy__options"><legend>Finish</legend><button className="finish-swatch finish-swatch--selected" aria-label={piece.singleFinish ? "Gold-tone finish" : "Gold vermeil finish"} />{!piece.singleFinish && <button className="finish-swatch finish-swatch--silver" aria-label="Sterling silver finish" />}</fieldset>
           {isRing && <fieldset className="product-buy__sizes"><legend>Ring size</legend><div>{["XS", "S", "M", "L", "XL"].map((size) => <button type="button" onClick={() => setSelectedSize(size)} className={size === selectedSize ? "is-selected" : ""} key={size}>{size}</button>)}</div></fieldset>}
           <div className="product-buy__quantity"><span>Quantity</span><div><button onClick={() => setQuantity(Math.max(1, quantity - 1))} aria-label="Decrease quantity"><Minus size={15} /></button><b>{quantity}</b><button onClick={() => setQuantity(quantity + 1)} aria-label="Increase quantity"><Plus size={15} /></button></div></div>
           <button className="button button--ink product-buy__add" data-magnetic onClick={addToBag}>Add to bag <Check size={15} strokeWidth={1.5} /></button>
@@ -48,6 +48,6 @@ export default function Product() {
         </aside>
       </div>
     </section>
-    <section className="related"><div><span className="eyebrow">You may also keep</span><h2>Companions for the same light.</h2></div><div className="related__grid">{pieces.filter((item) => item.slug !== piece.slug).slice(0, 4).map((item) => <ProductCard key={item.slug} piece={item} />)}</div></section>
+    <section className="related"><div><span className="eyebrow">You may also keep</span><h2>Discover More From This Collection</h2></div><div className="related__grid">{pieces.filter((item) => item.slug !== piece.slug).slice(0, 4).map((item) => <ProductCard key={item.slug} piece={item} />)}</div></section>
   </>;
 }
