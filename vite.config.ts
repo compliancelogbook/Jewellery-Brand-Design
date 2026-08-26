@@ -1,3 +1,4 @@
+import "dotenv/config";
 import { jsxLocPlugin } from "@builder.io/vite-plugin-jsx-loc";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
@@ -5,6 +6,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { defineConfig, type Plugin, type ViteDevServer } from "vite";
 import { vitePluginManusRuntime } from "vite-plugin-manus-runtime";
+import { getAllStock, getStockForSlug } from "./server/stock";
 
 // =============================================================================
 // Manus Debug Collector - Vite Plugin
@@ -203,7 +205,31 @@ function vitePluginStorageProxy(): Plugin {
   };
 }
 
-const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector(), vitePluginStorageProxy()];
+// Mirrors the /api/stock routes registered in server/index.ts for production,
+// so `pnpm run dev` (pure Vite, no Express) can serve live stock data too.
+function vitePluginStockApi(): Plugin {
+  return {
+    name: "stock-api",
+    configureServer(server: ViteDevServer) {
+      server.middlewares.use("/api/stock", async (req, res) => {
+        const urlPath = (req.url ?? "/").split("?")[0];
+        const slug = urlPath && urlPath !== "/" ? decodeURIComponent(urlPath.replace(/^\//, "")) : null;
+
+        const result = slug ? await getStockForSlug(slug) : await getAllStock();
+        if ("error" in result) {
+          res.writeHead(500, { "Content-Type": "application/json" });
+          res.end(JSON.stringify(result));
+          return;
+        }
+
+        res.writeHead(200, { "Content-Type": "application/json" });
+        res.end(JSON.stringify(slug ? { slug, stock: result.data } : result.data));
+      });
+    },
+  };
+}
+
+const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector(), vitePluginStorageProxy(), vitePluginStockApi()];
 
 export default defineConfig({
   plugins,

@@ -1,7 +1,9 @@
+import "dotenv/config";
 import express from "express";
 import { createServer } from "http";
 import path from "path";
 import { fileURLToPath } from "url";
+import { getAllStock, getStockForSlug } from "./stock";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -9,6 +11,21 @@ const __dirname = path.dirname(__filename);
 async function startServer() {
   const app = express();
   const server = createServer(app);
+
+  // Live stock levels, backed by Supabase. Returns an empty result instead of
+  // erroring when Supabase isn't configured yet, so the site keeps working
+  // without stock data until SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY are set.
+  app.get("/api/stock", async (_req, res) => {
+    const result = await getAllStock();
+    if ("error" in result) return res.status(500).json(result);
+    res.json(result.data);
+  });
+
+  app.get("/api/stock/:slug", async (req, res) => {
+    const result = await getStockForSlug(req.params.slug);
+    if ("error" in result) return res.status(500).json(result);
+    res.json({ slug: req.params.slug, stock: result.data });
+  });
 
   // Serve static files from dist/public in production
   const staticPath =
