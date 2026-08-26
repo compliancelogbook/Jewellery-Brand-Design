@@ -9,9 +9,10 @@ export type Piece = {
   badge?: string;
   image: string;
   alternateImage: string;
+  description?: string;
 };
 
-export type EditSlug = "sola" | "bridal" | "something-blue" | "mother-of-the-bride" | "say-i-do" | "bridal-accessories" | "chic-happens" | "old-money-minimalist";
+export type EditSlug = "sola" | "bridal" | "something-blue" | "mother-of-the-bride" | "say-i-do" | "bridal-accessories" | "chic-happens" | "old-money-minimalist" | "christmas";
 export type CategorySlug = "rings" | "earrings" | "necklaces" | "bracelets" | "bridal-accessories";
 export type CategoryCollection = { slug: CategorySlug; type: NonNullable<Piece["category"]>; title: string; eyebrow: string; subtitle: string; image: string; featureImage: string };
 
@@ -19,7 +20,7 @@ export type CollectionEdit = {
   slug: EditSlug;
   title: string;
   eyebrow: string;
-  subtitle: string;
+  subtitle?: string;
   image: string;
   children?: EditSlug[];
 };
@@ -33,6 +34,7 @@ export const collectionEdits: CollectionEdit[] = [
   { slug: "bridal-accessories", title: "Bridal Accessories", eyebrow: "The Bridal Edit / IV", subtitle: "Hair pieces, luminous drops and the finishing details that turn a look into a memory.", image: "/manus-storage/golden-hour-bridal-accessories-hero_fd3a30d3.jpg" },
   { slug: "chic-happens", title: "Chic Happens", eyebrow: "An after-hours edit", subtitle: "A little more shine for late tables, a good shirt and an unexpected invitation.", image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=1600&q=90" },
   { slug: "old-money-minimalist", title: "Old Money Minimalist", eyebrow: "The wardrobe edit", subtitle: "Clean lines, softened metals and the pieces you wear often enough to forget they are there.", image: "https://images.unsplash.com/photo-1589128777073-263566ae5e4d?auto=format&fit=crop&w=1600&q=90" },
+  { slug: "christmas", title: "The Christmas Edit", eyebrow: "Gifts for the golden hour", subtitle: "For the stockings, the secret santas, and the one thing you actually wanted.", image: "https://res.cloudinary.com/dnp0sgoad/image/upload/v1787767314/reindeer-crystal-red-nose-studs-staged-master-concept-v1.png" },
 ];
 
 export const categoryCollections: CategoryCollection[] = [
@@ -54,6 +56,30 @@ export const pieces: Piece[] = [
     badge: "New",
     image: "/manus-storage/oriele-product-aurora-disc_f884f487.jpg",
     alternateImage: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1100&q=85",
+  },
+  {
+    slug: "reindeer-red-nose-studs",
+    name: "Reindeer Red-Nose Studs",
+    category: "earrings",
+    edits: ["christmas"],
+    material: "Gold-plated brass · red crystal",
+    price: "£54",
+    badge: "Limited edition",
+    description: "A softly sculpted reindeer with a wink of red crystal for a nose — a small, cheerful stud for the last stretch of December.",
+    image: "https://res.cloudinary.com/dnp0sgoad/image/upload/v1787767299/reindeer-crystal-red-nose-studs-head-on-master-concept-v2.png",
+    alternateImage: "https://res.cloudinary.com/dnp0sgoad/image/upload/v1787767144/reindeer-crystal-red-nose-studs-on-model-ear-macro-concept-v1.png",
+  },
+  {
+    slug: "vesper-pearl-drops",
+    name: "Vesper Pearl Drops",
+    category: "earrings",
+    edits: ["bridal", "mother-of-the-bride"],
+    material: "18k gold vermeil · pear-cut cubic zirconia · South Sea pearl",
+    price: "£168",
+    badge: "Signature piece",
+    description: "A pear-cut solitaire meets a lustrous South Sea pearl in a quiet study of contrast — one bright edge, one soft weight, for the walk down the aisle and every ordinary morning after.",
+    image: "https://res.cloudinary.com/dnp0sgoad/image/upload/v1787388121/pear-pearl-studs-house-model-02-approved-v1_pcbl74.png",
+    alternateImage: "https://res.cloudinary.com/dnp0sgoad/image/upload/v1787388121/pear-pearl-studs-house-model-02-approved-v1_pcbl74.png",
   },
   {
     slug: "pearl-orbit-drop",

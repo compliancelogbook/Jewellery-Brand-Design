@@ -12,9 +12,11 @@ export default function SmoothMotion({ children }: { children: ReactNode }) {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const lenis = new Lenis({
-      lerp: 0.075,
-      wheelMultiplier: 0.82,
-      touchMultiplier: 1.05,
+      duration: 1.15,
+      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      wheelMultiplier: 1,
+      touchMultiplier: 1.1,
+      syncTouch: true,
       smoothWheel: true,
     });
     lenisRef.current = lenis;
