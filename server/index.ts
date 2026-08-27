@@ -3,7 +3,7 @@ import express from "express";
 import { createServer } from "http";
 import path from "path";
 import { fileURLToPath } from "url";
-import { getAllStock, getStockForSlug } from "./stock";
+import { getAllStock, getSizeStockForSlug, getStockForSlug } from "./stock";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -25,6 +25,14 @@ async function startServer() {
     const result = await getStockForSlug(req.params.slug);
     if ("error" in result) return res.status(500).json(result);
     res.json({ slug: req.params.slug, ...result.data });
+  });
+
+  // Per-size stock (rings). Empty object when Supabase isn't configured, or the
+  // product has no per-size rows — the frontend treats that as "no size data yet".
+  app.get("/api/size-stock/:slug", async (req, res) => {
+    const result = await getSizeStockForSlug(req.params.slug);
+    if ("error" in result) return res.status(500).json(result);
+    res.json(result.data);
   });
 
   // Serve static files from dist/public in production

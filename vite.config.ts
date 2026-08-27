@@ -6,7 +6,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { defineConfig, type Plugin, type ViteDevServer } from "vite";
 import { vitePluginManusRuntime } from "vite-plugin-manus-runtime";
-import { getAllStock, getStockForSlug } from "./server/stock";
+import { getAllStock, getSizeStockForSlug, getStockForSlug } from "./server/stock";
 
 // =============================================================================
 // Manus Debug Collector - Vite Plugin
@@ -224,6 +224,26 @@ function vitePluginStockApi(): Plugin {
 
         res.writeHead(200, { "Content-Type": "application/json" });
         res.end(JSON.stringify(slug ? { slug, ...result.data } : result.data));
+      });
+
+      server.middlewares.use("/api/size-stock", async (req, res) => {
+        const urlPath = (req.url ?? "/").split("?")[0];
+        const slug = urlPath && urlPath !== "/" ? decodeURIComponent(urlPath.replace(/^\//, "")) : null;
+        if (!slug) {
+          res.writeHead(400, { "Content-Type": "application/json" });
+          res.end(JSON.stringify({ error: "slug required" }));
+          return;
+        }
+
+        const result = await getSizeStockForSlug(slug);
+        if ("error" in result) {
+          res.writeHead(500, { "Content-Type": "application/json" });
+          res.end(JSON.stringify(result));
+          return;
+        }
+
+        res.writeHead(200, { "Content-Type": "application/json" });
+        res.end(JSON.stringify(result.data));
       });
     },
   };

@@ -10,6 +10,7 @@ import { categoryCollections } from "@/data/catalog";
 
 const nav = [
   { label: "New In", href: "/collections/new-in" },
+  { label: "The Personal Edit", href: "/collections/personal" },
   { label: "Golden Hour", href: "/collections/sola" },
   { label: "The Bridal Edit", href: "/collections/bridal" },
   { label: "Chic Happens", href: "/collections/chic-happens" },
@@ -51,7 +52,7 @@ export default function BrandShell({ children }: { children: ReactNode }) {
   return (
     <div className="site-shell">
       <div className="shipping-ticker" role="note">
-        <div className="shipping-ticker__track"><span>Complimentary UK delivery over £50</span><i /> <span>Jewellery made in small, considered runs</span><i /> <span>Complimentary UK delivery over £50</span></div>
+        <span>Free delivery to United Kingdom for orders over £50</span>
       </div>
       <header className={`site-header ${isShopOpen ? "site-header--menu-open" : isHome && !isScrolled ? "site-header--over" : "site-header--solid"}`}>
         <Link href="/" className="wordmark" aria-label="Golden Hour home"><BrandLockup /></Link>
