@@ -29,7 +29,7 @@ const signals = [
 export default function Journal() {
   return <article className="journal-page">
     <section className="journal-hero">
-      <div className="journal-hero__folio"><span className="journal-hero__brand"><svg className="mark" viewBox="0 0 26 26" fill="none" aria-hidden="true"><circle cx="13" cy="13" r="3.4" fill="currentColor" /><circle cx="13" cy="13" r="10" stroke="currentColor" strokeWidth="1" /></svg>Golden Hour London / Journal</span><i /><span>Issue 01 / AW 26</span></div>
+      <div className="journal-hero__folio"><span className="journal-hero__brand"><svg className="mark" viewBox="0 0 26 26" fill="none" aria-hidden="true"><circle cx="13" cy="13" r="3.4" fill="currentColor" /><circle cx="13" cy="13" r="10" stroke="currentColor" strokeWidth="1" /></svg>Cherished by Jade / Journal</span><i /><span>Issue 01 / AW 26</span></div>
       <div className="journal-hero__title"><span className="eyebrow">The AW/26 edit</span><h1>After the<br /><em>light.</em></h1><p>Three jewellery notes for the season of ink, texture and a little more intention.</p></div>
       <div className="journal-hero__visual"><img src="https://images.unsplash.com/photo-1635767798638-3e25273a8236?auto=format&fit=crop&w=1600&q=90" alt="Woman in a black silk jacket wearing sculptural silver earrings" /><span>Fashion note / 04 minute read</span></div>
       <p className="journal-hero__sidecopy">Not a forecast. More a way of looking: at metal, at proportion, at the small decisions that alter the whole mood of an outfit.</p>
@@ -47,7 +47,7 @@ export default function Journal() {
     </section>
 
     <section className="journal-close">
-      <span className="eyebrow">The Golden Hour point of view</span><h2>For the pieces<br />that change the <em>whole story.</em></h2><p>Explore jewellery made for evenings that call for little more than a good coat, an open collar and something worth noticing.</p><Link href="/collections/sola" className="button button--light" data-magnetic>Shop the latest <ArrowRight size={17} strokeWidth={1.4} /></Link><Link href="/collections/bridal" className="journal-close__secondary">For the occasion <MoveUpRight size={16} strokeWidth={1.4} /></Link>
+      <span className="eyebrow">The Cherished by Jade point of view</span><h2>For the pieces<br />that change the <em>whole story.</em></h2><p>Explore jewellery made for evenings that call for little more than a good coat, an open collar and something worth noticing.</p><Link href="/collections/sola" className="button button--light" data-magnetic>Shop the latest <ArrowRight size={17} strokeWidth={1.4} /></Link><Link href="/collections/bridal" className="journal-close__secondary">For the occasion <MoveUpRight size={16} strokeWidth={1.4} /></Link>
     </section>
   </article>;
 }
