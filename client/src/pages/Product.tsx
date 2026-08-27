@@ -54,7 +54,7 @@ export default function Product() {
           <div className="product-buy__accordions">
             <details open><summary>Details <span>+</span></summary><p>Designed as easy everyday jewellery with a tactile, slightly irregular surface. Finished and packed by hand.</p></details>
             {isRing && <RingSizeGuide />}
-            <details><summary>Delivery & returns <span>+</span></summary><p>UK delivery is complimentary above £50. {isEarrings ? "For hygiene reasons, earrings cannot be returned or exchanged unless faulty — faulty items are eligible for a full refund or replacement." : "Pieces may be returned unworn within 30 days of receipt."}</p></details>
+            <details><summary>Delivery & returns <span>+</span></summary><p>Standard UK delivery (Royal Mail 48, 2–3 working days) is £2.99, free above £50. Express delivery (Royal Mail 24, 1–2 working days) is £3.99. {isEarrings ? "For hygiene reasons, earrings cannot be returned or exchanged unless faulty — faulty items are eligible for a full refund or replacement." : "Pieces may be returned unworn within 30 days of receipt."}</p></details>
             <details><summary>Care <span>+</span></summary><p>Store in the pouch provided and clean gently with a dry cloth.</p></details>
           </div>
           <button className="product-buy__share"><Share2 size={15} strokeWidth={1.4} /> Share this piece</button>

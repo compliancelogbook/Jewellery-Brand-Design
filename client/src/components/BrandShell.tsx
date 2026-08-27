@@ -10,12 +10,11 @@ import { categoryCollections } from "@/data/catalog";
 
 const nav = [
   { label: "New In", href: "/collections/new-in" },
-  { label: "New: Solstice", href: "/collections/sola" },
+  { label: "Golden Hour", href: "/collections/sola" },
   { label: "The Bridal Edit", href: "/collections/bridal" },
   { label: "Chic Happens", href: "/collections/chic-happens" },
   { label: "Old Money", href: "/collections/old-money-minimalist" },
   { label: "The Christmas Edit", href: "/collections/christmas" },
-  { label: "The studio", href: "/pages/our-story" },
 ];
 
 function OrbitMark() {
@@ -89,7 +88,7 @@ function Footer() {
     <footer className="site-footer">
       <div className="site-footer__identity"><Link href="/" className="wordmark"><BrandLockup /></Link><p>Jewellery for the way you mark a day.</p></div>
       <form className="footer-newsletter" onSubmit={(event) => event.preventDefault()}><label htmlFor="footer-email">Studio letter</label><div><input id="footer-email" type="email" placeholder="Email address" /><button type="submit">Join</button></div></form>
-      <div className="site-footer__links"><div><span>Visit</span><Link href="/collections/sola">The collection</Link><Link href="/collections/bridal">Occasion pieces</Link><Link href="/journal">The journal</Link><Link href="/pages/our-story">The studio</Link></div><div><span>Help</span><Link href="/help/size-guide">Size guide</Link><Link href="/help/delivery-returns">Delivery & returns</Link><Link href="/help/care-guide">Care guide</Link><a href="mailto:hello@goldenhourlondon.co.uk">Contact us</a></div></div>
+      <div className="site-footer__links"><div><span>Visit</span><Link href="/collections/sola">The collection</Link><Link href="/collections/bridal">Occasion pieces</Link><Link href="/journal">The journal</Link></div><div><span>Help</span><Link href="/help/size-guide">Size guide</Link><Link href="/help/delivery-returns">Delivery & returns</Link><Link href="/help/care-guide">Care guide</Link><a href="mailto:hello@goldenhourlondon.co.uk">Contact us</a></div></div>
       <div className="site-footer__fineprint"><span>© 2026 Golden Hour London</span><span>Made with care in the United Kingdom</span><span><Link href="/pages/terms">Terms</Link> · <Link href="/pages/privacy">Privacy</Link></span></div>
     </footer>
   );

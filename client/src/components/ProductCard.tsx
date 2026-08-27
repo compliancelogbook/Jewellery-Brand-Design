@@ -15,7 +15,7 @@ export default function ProductCard({ piece }: { piece: Piece }) {
   return (
     <article className="product-card">
       <Link href={`/products/${piece.slug}`} className="product-card__image-link" aria-label={`View ${piece.name}`}>
-        <div className="product-card__image-wrap">
+        <div className="product-card__image-wrap" data-slug={piece.slug}>
           {piece.badge && <span className="product-card__badge">{piece.badge}</span>}
           <button className={`product-card__favourite ${saved ? "is-saved" : ""}`} onClick={(event) => { event.preventDefault(); togglePiece(piece); }} aria-label={saved ? `Remove ${piece.name} from saved pieces` : `Save ${piece.name}`}><Heart size={18} fill={saved ? "currentColor" : "none"} strokeWidth={1.35} /></button>
           <img src={piece.image} alt="" className="product-card__image product-card__image--primary" />
