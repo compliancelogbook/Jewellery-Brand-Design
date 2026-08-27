@@ -24,7 +24,7 @@ async function startServer() {
   app.get("/api/stock/:slug", async (req, res) => {
     const result = await getStockForSlug(req.params.slug);
     if ("error" in result) return res.status(500).json(result);
-    res.json({ slug: req.params.slug, stock: result.data });
+    res.json({ slug: req.params.slug, ...result.data });
   });
 
   // Serve static files from dist/public in production

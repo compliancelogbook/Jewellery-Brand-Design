@@ -2,11 +2,16 @@
 import { Heart } from "lucide-react";
 import { Link } from "wouter";
 import { useFavourites } from "@/contexts/FavouritesContext";
+import { useStock } from "@/contexts/StockContext";
+import { getStockLabel, getStockStatus } from "@/lib/stock";
 import type { Piece } from "../data/catalog";
 
 export default function ProductCard({ piece }: { piece: Piece }) {
   const { isSaved, togglePiece } = useFavourites();
   const saved = isSaved(piece.slug);
+  const { stock, restockedAt } = useStock(piece.slug);
+  const stockStatus = getStockStatus(stock, restockedAt);
+  const stockLabel = getStockLabel(stockStatus, stock);
   return (
     <article className="product-card">
       <Link href={`/products/${piece.slug}`} className="product-card__image-link" aria-label={`View ${piece.name}`}>
@@ -22,6 +27,7 @@ export default function ProductCard({ piece }: { piece: Piece }) {
         <Link href={`/products/${piece.slug}`} className="product-card__name">{piece.name}</Link>
         <p>{piece.material}</p>
         <strong>{piece.price}</strong>
+        {stockLabel && <span className={`product-card__stock product-card__stock--${stockStatus}`}>{stockLabel}</span>}
       </div>
     </article>
   );

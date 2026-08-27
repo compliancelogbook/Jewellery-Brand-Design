@@ -223,7 +223,7 @@ function vitePluginStockApi(): Plugin {
         }
 
         res.writeHead(200, { "Content-Type": "application/json" });
-        res.end(JSON.stringify(slug ? { slug, stock: result.data } : result.data));
+        res.end(JSON.stringify(slug ? { slug, ...result.data } : result.data));
       });
     },
   };

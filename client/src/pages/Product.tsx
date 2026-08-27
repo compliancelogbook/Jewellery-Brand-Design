@@ -6,6 +6,8 @@ import ProductCard from "@/components/ProductCard";
 import RingSizeGuide from "@/components/RingSizeGuide";
 import { useCart } from "@/contexts/CartContext";
 import { useFavourites } from "@/contexts/FavouritesContext";
+import { useStock } from "@/contexts/StockContext";
+import { getStockLabel, getStockStatus } from "@/lib/stock";
 import { findPiece, pieces } from "../data/catalog";
 
 export default function Product() {
@@ -15,6 +17,10 @@ export default function Product() {
   const [selectedSize, setSelectedSize] = useState("M");
   const { addItem, openCart } = useCart();
   const { isSaved, togglePiece } = useFavourites();
+  const { stock, restockedAt } = useStock(piece.slug);
+  const stockStatus = getStockStatus(stock, restockedAt);
+  const stockLabel = getStockLabel(stockStatus, stock);
+  const isOutOfStock = stockStatus === "out-of-stock";
   const isRing = piece.category === "ring";
   const addToBag = () => { addItem(piece, quantity, isRing ? selectedSize : undefined); openCart(); };
 
@@ -31,11 +37,12 @@ export default function Product() {
         <aside className="product-buy">
           <span className="product-card__badge">{piece.badge ?? "Studio piece"}</span>
           <h1>{piece.name}</h1><p className="product-buy__material">{piece.material}</p><strong className="product-buy__price">{piece.price}</strong>
+          {stockLabel && <span className={`product-buy__stock product-buy__stock--${stockStatus}`}>{stockLabel}</span>}
           <p className="product-buy__intro">{piece.description ?? (isRing ? "A softly sculpted ring, designed for everyday light and an easy, tactile fit." : "A sun-shaped pendant, designed in the studio to catch light without asking for it.")}</p>
           <fieldset className="product-buy__options"><legend>Finish</legend><button className="finish-swatch finish-swatch--selected" aria-label={piece.singleFinish ? "Gold-tone finish" : "Gold vermeil finish"} />{!piece.singleFinish && <button className="finish-swatch finish-swatch--silver" aria-label="Sterling silver finish" />}</fieldset>
           {isRing && <fieldset className="product-buy__sizes"><legend>Ring size</legend><div>{["XS", "S", "M", "L", "XL"].map((size) => <button type="button" onClick={() => setSelectedSize(size)} className={size === selectedSize ? "is-selected" : ""} key={size}>{size}</button>)}</div></fieldset>}
           <div className="product-buy__quantity"><span>Quantity</span><div><button onClick={() => setQuantity(Math.max(1, quantity - 1))} aria-label="Decrease quantity"><Minus size={15} /></button><b>{quantity}</b><button onClick={() => setQuantity(quantity + 1)} aria-label="Increase quantity"><Plus size={15} /></button></div></div>
-          <button className="button button--ink product-buy__add" data-magnetic onClick={addToBag}>Add to bag <Check size={15} strokeWidth={1.5} /></button>
+          <button className="button button--ink product-buy__add" data-magnetic disabled={isOutOfStock} onClick={addToBag}>{isOutOfStock ? "Out of stock" : <>Add to bag <Check size={15} strokeWidth={1.5} /></>}</button>
           <button className={`product-buy__wish ${isSaved(piece.slug) ? "is-saved" : ""}`} data-magnetic onClick={() => togglePiece(piece)}><Heart size={18} fill={isSaved(piece.slug) ? "currentColor" : "none"} strokeWidth={1.4} /> {isSaved(piece.slug) ? "Saved to your pieces" : "Save for later"}</button>
           <ul className="product-buy__notes"><li><Check size={15} strokeWidth={1.5} />Finished in a considered small run</li><li><Check size={15} strokeWidth={1.5} />Packed simply, ready to give</li><li><Check size={15} strokeWidth={1.5} />14-day returns on unworn pieces</li></ul>
           <div className="product-buy__accordions">
