@@ -1,6 +1,6 @@
 /** Golden Hour visual system: asymmetric media mosaic paired with a calm, sticky purchase-panel hierarchy. */
 import { Check, Heart, Minus, Plus, Share2 } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useParams } from "wouter";
 import ProductCard from "@/components/ProductCard";
 import RingSizeGuide from "@/components/RingSizeGuide";
@@ -8,13 +8,15 @@ import { useCart } from "@/contexts/CartContext";
 import { useFavourites } from "@/contexts/FavouritesContext";
 import { useStock } from "@/contexts/StockContext";
 import { getStockLabel, getStockStatus } from "@/lib/stock";
-import { findPiece, getEdit, pieces } from "../data/catalog";
+import { finishLabels, findPiece, getEdit, getFinishes, pieces } from "../data/catalog";
 
 export default function Product() {
   const params = useParams<{ slug: string }>();
   const piece = findPiece(params.slug);
+  const availableFinishes = getFinishes(piece);
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState("M");
+  const [selectedFinish, setSelectedFinish] = useState(availableFinishes[0]);
   const { addItem, openCart } = useCart();
   const { isSaved, togglePiece } = useFavourites();
   const { stock, restockedAt } = useStock(piece.slug);
@@ -24,7 +26,9 @@ export default function Product() {
   const isRing = piece.category === "ring";
   const isEarrings = piece.category === "earrings";
   const primaryEdit = getEdit(piece.edits[0]);
-  const addToBag = () => { addItem(piece, quantity, isRing ? selectedSize : undefined); openCart(); };
+  const addToBag = () => { addItem(piece, quantity, isRing ? selectedSize : undefined, finishLabels[selectedFinish]); openCart(); };
+
+  useEffect(() => { setSelectedFinish(getFinishes(piece)[0]); }, [piece.slug]);
 
   return <>
     <section className="product-page">
@@ -41,7 +45,7 @@ export default function Product() {
           <h1>{piece.name}</h1><p className="product-buy__material">{piece.material}</p><strong className="product-buy__price">{piece.price}</strong>
           {stockLabel && <span className={`product-buy__stock product-buy__stock--${stockStatus}`}>{stockLabel}</span>}
           <p className="product-buy__intro">{piece.description ?? (isRing ? "A softly sculpted ring, designed for everyday light and an easy, tactile fit." : "A sun-shaped pendant, designed in the studio to catch light without asking for it.")}</p>
-          <fieldset className="product-buy__options"><legend>Finish</legend><button className="finish-swatch finish-swatch--selected" aria-label={piece.singleFinish ? "Gold-tone finish" : "Gold vermeil finish"} />{!piece.singleFinish && <button className="finish-swatch finish-swatch--silver" aria-label="Sterling silver finish" />}</fieldset>
+          <fieldset className="product-buy__options"><legend>Finish: <b>{finishLabels[selectedFinish]}</b></legend><div className="finish-swatches">{availableFinishes.map((finish) => <button type="button" key={finish} className={`finish-swatch finish-swatch--${finish} ${finish === selectedFinish ? "finish-swatch--selected" : ""}`} aria-label={`${finishLabels[finish]} finish`} aria-pressed={finish === selectedFinish} onClick={() => setSelectedFinish(finish)} />)}</div></fieldset>
           {isRing && <fieldset className="product-buy__sizes"><legend>Ring size</legend><div>{["XS", "S", "M", "L", "XL"].map((size) => <button type="button" onClick={() => setSelectedSize(size)} className={size === selectedSize ? "is-selected" : ""} key={size}>{size}</button>)}</div></fieldset>}
           <div className="product-buy__quantity"><span>Quantity</span><div><button onClick={() => setQuantity(Math.max(1, quantity - 1))} aria-label="Decrease quantity"><Minus size={15} /></button><b>{quantity}</b><button onClick={() => setQuantity(quantity + 1)} aria-label="Increase quantity"><Plus size={15} /></button></div></div>
           <button className="button button--ink product-buy__add" data-magnetic disabled={isOutOfStock} onClick={addToBag}>{isOutOfStock ? "Out of stock" : <>Add to bag <Check size={15} strokeWidth={1.5} /></>}</button>

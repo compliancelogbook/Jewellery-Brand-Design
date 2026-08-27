@@ -2,13 +2,13 @@
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 import type { Piece } from "@/data/catalog";
 
-export type CartItem = { key: string; piece: Piece; quantity: number; size?: string };
+export type CartItem = { key: string; piece: Piece; quantity: number; size?: string; finish?: string };
 
 type CartContextValue = {
   items: CartItem[];
   itemCount: number;
   isCartOpen: boolean;
-  addItem: (piece: Piece, quantity: number, size?: string) => void;
+  addItem: (piece: Piece, quantity: number, size?: string, finish?: string) => void;
   updateQuantity: (key: string, quantity: number) => void;
   removeItem: (key: string) => void;
   openCart: () => void;
@@ -30,11 +30,11 @@ export function CartProvider({ children }: { children: ReactNode }) {
     items,
     itemCount: items.reduce((total, item) => total + item.quantity, 0),
     isCartOpen,
-    addItem: (piece, quantity, size) => {
-      const key = `${piece.slug}-${size ?? "standard"}`;
+    addItem: (piece, quantity, size, finish) => {
+      const key = `${piece.slug}-${size ?? "standard"}-${finish ?? "standard"}`;
       setItems((current) => {
         const existing = current.find((item) => item.key === key);
-        return existing ? current.map((item) => item.key === key ? { ...item, quantity: item.quantity + quantity } : item) : [...current, { key, piece, quantity, size }];
+        return existing ? current.map((item) => item.key === key ? { ...item, quantity: item.quantity + quantity } : item) : [...current, { key, piece, quantity, size, finish }];
       });
     },
     updateQuantity: (key, quantity) => setItems((current) => quantity < 1 ? current.filter((item) => item.key !== key) : current.map((item) => item.key === key ? { ...item, quantity } : item)),
