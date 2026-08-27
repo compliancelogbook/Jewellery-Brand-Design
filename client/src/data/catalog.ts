@@ -75,17 +75,7 @@ export const categoryCollections: CategoryCollection[] = [
 ];
 
 export const pieces: Piece[] = [
-  {
-    slug: "aurora-disc-pendant",
-    name: "Aurora Disc Pendant",
-    category: "necklace",
-    edits: ["sola", "chic-happens"],
-    material: "Gold vermeil · amber glass",
-    price: "£118",
-    badge: "New",
-    image: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=1100&q=85",
-    alternateImage: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1100&q=85",
-  },
+
   {
     slug: "burgundy-bow-stud-earrings",
     name: "Burgundy Velvet Bow Stud Earrings",
@@ -126,193 +116,24 @@ export const pieces: Piece[] = [
     image: "https://res.cloudinary.com/dnp0sgoad/image/upload/v1787388121/pear-pearl-studs-house-model-02-approved-v1_pcbl74.png",
     alternateImage: "https://res.cloudinary.com/dnp0sgoad/image/upload/v1787767442/Gold-Tone_Pear-Shaped_Stone_Pearl-Effect_Drop_Stud_Earrings.png",
   },
-  {
-    slug: "pearl-orbit-drop",
-    name: "Pearl Orbit Drops",
-    category: "earrings",
-    edits: ["sola", "bridal", "mother-of-the-bride"],
-    material: "Gold vermeil · freshwater pearl",
-    price: "£94",
-    badge: "New",
-    image: "https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?auto=format&fit=crop&w=1100&q=85",
-    alternateImage: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=1100&q=85",
-  },
-  {
-    slug: "solis-ridge-ring",
-    name: "Solis Ridge Ring",
-    category: "ring",
-    edits: ["sola", "say-i-do", "old-money-minimalist"],
-    material: "Recycled silver · 18k plate",
-    price: "£82",
-    image: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?auto=format&fit=crop&w=1100&q=85",
-    alternateImage: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=1100&q=85",
-  },
-  {
-    slug: "tide-thread-chain",
-    name: "Tide Thread Chain",
-    category: "necklace",
-    edits: ["sola", "chic-happens"],
-    material: "Gold vermeil · hand-finished",
-    price: "£136",
-    image: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=1100&q=85",
-    alternateImage: "https://images.unsplash.com/photo-1619119069152-a2b331eb392a?auto=format&fit=crop&w=1100&q=85",
-  },
-  {
-    slug: "lumen-pearl-collar",
-    name: "Lumen Pearl Collar",
-    category: "necklace",
-    edits: ["bridal", "mother-of-the-bride"],
-    material: "Freshwater pearl · silk cord",
-    price: "£152",
-    image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=1100&q=85",
-    alternateImage: "https://images.unsplash.com/photo-1611085583191-a3b181a88401?auto=format&fit=crop&w=1100&q=85",
-  },
-  {
-    slug: "citrus-stud-set",
-    name: "Citrus Stud Set",
-    category: "earrings",
-    edits: ["chic-happens"],
-    material: "Gold vermeil · citrine glass",
-    price: "£68",
-    badge: "Small batch",
-    image: "https://images.unsplash.com/photo-1584302179602-e4c3d3fd629d?auto=format&fit=crop&w=1100&q=85",
-    alternateImage: "https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?auto=format&fit=crop&w=1100&q=85",
-  },
-  {
-    slug: "rivulet-cuff",
-    name: "Rivulet Cuff",
-    category: "bracelet",
-    edits: ["chic-happens", "old-money-minimalist"],
-    material: "Recycled silver · hand-formed",
-    price: "£109",
-    image: "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?auto=format&fit=crop&w=1100&q=85",
-    alternateImage: "https://images.unsplash.com/photo-1635767798638-3e25273a8236?auto=format&fit=crop&w=1100&q=85",
-  },
-  {
-    slug: "marea-chainlet",
-    name: "Marea Chainlet",
-    category: "bracelet",
-    edits: ["sola", "old-money-minimalist"],
-    material: "Gold vermeil · adjustable",
-    price: "£74",
-    image: "https://images.unsplash.com/photo-1589128777073-263566ae5e4d?auto=format&fit=crop&w=1100&q=85",
-    alternateImage: "https://images.unsplash.com/photo-1608508644127-ba99d7732fee?auto=format&fit=crop&w=1100&q=85",
-  },
-  {
-    slug: "cerulean-vow-drop",
-    name: "Cerulean Vow Drops",
-    category: "earrings",
-    edits: ["bridal", "something-blue"],
-    material: "Blue topaz · gold vermeil",
-    price: "£126",
-    badge: "Bridal",
-    image: "https://images.unsplash.com/photo-1584302179602-e4c3d3fd629d?auto=format&fit=crop&w=1100&q=85",
-    alternateImage: "https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?auto=format&fit=crop&w=1100&q=85",
-  },
-  {
-    slug: "maris-pearl-pendant",
-    name: "Maris Pearl Pendant",
-    category: "necklace",
-    edits: ["bridal", "mother-of-the-bride"],
-    material: "Mother-of-pearl · 18k gold plate",
-    price: "£148",
-    badge: "Mother-of-pearl",
-    image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1100&q=85",
-    alternateImage: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=1100&q=85",
-  },
-  {
-    slug: "ivory-arc-studs",
-    name: "Ivory Arc Studs",
-    category: "earrings",
-    edits: ["bridal", "mother-of-the-bride"],
-    material: "Mother-of-pearl · sterling silver",
-    price: "£96",
-    image: "https://images.unsplash.com/photo-1611085583191-a3b181a88401?auto=format&fit=crop&w=1100&q=85",
-    alternateImage: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=1100&q=85",
-  },
-  {
-    slug: "promise-pave-ring",
-    name: "Promise Pave Ring",
-    category: "ring",
-    edits: ["bridal", "say-i-do", "honeymoon"],
-    material: "Recycled silver · cubic zirconia",
-    price: "£118",
-    image: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?auto=format&fit=crop&w=1100&q=85",
-    alternateImage: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1100&q=85",
-  },
-  {
-    slug: "heirloom-signature-ring",
-    name: "Heirloom Signet Ring",
-    category: "ring",
-    edits: ["old-money-minimalist", "say-i-do", "honeymoon"],
-    material: "Recycled silver · hand-finished",
-    price: "£132",
-    badge: "Studio piece",
-    image: "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?auto=format&fit=crop&w=1100&q=85",
-    alternateImage: "https://images.unsplash.com/photo-1635767798638-3e25273a8236?auto=format&fit=crop&w=1100&q=85",
-  },
-  {
-    slug: "midnight-gala-hoops",
-    name: "Midnight Gala Hoops",
-    category: "earrings",
-    edits: ["chic-happens"],
-    material: "Gold vermeil · black enamel",
-    price: "£112",
-    image: "https://images.unsplash.com/photo-1635767798638-3e25273a8236?auto=format&fit=crop&w=1100&q=85",
-    alternateImage: "https://images.unsplash.com/photo-1589128777073-263566ae5e4d?auto=format&fit=crop&w=1100&q=85",
-  },
-  {
-    slug: "meridian-link-chain",
-    name: "Meridian Link Chain",
-    category: "necklace",
-    edits: ["chic-happens", "old-money-minimalist"],
-    material: "Gold vermeil · hand-finished",
-    price: "£164",
-    image: "https://images.unsplash.com/photo-1608508644127-ba99d7732fee?auto=format&fit=crop&w=1100&q=85",
-    alternateImage: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=1100&q=85",
-  },
-  {
-    slug: "pearl-comet-hair-pin",
-    name: "Pearl Comet Hair Pin",
-    category: "accessory",
-    edits: ["bridal", "bridal-accessories"],
-    material: "Freshwater pearl · gold-plated brass",
-    price: "£68",
-    badge: "Bridal accessory",
-    image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=1100&q=85",
-    alternateImage: "https://images.unsplash.com/photo-1611085583191-a3b181a88401?auto=format&fit=crop&w=1600&q=90",
-  },
-  {
-    slug: "marlowe-halo-headband",
-    name: "Marlowe Halo Headband",
-    category: "accessory",
-    edits: ["bridal", "bridal-accessories"],
-    material: "Satin · mother-of-pearl · crystal",
-    price: "£142",
-    badge: "Limited run",
-    image: "https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?auto=format&fit=crop&w=1100&q=85",
-    alternateImage: "https://images.unsplash.com/photo-1611085583191-a3b181a88401?auto=format&fit=crop&w=1600&q=90",
-  },
-  {
-    slug: "luna-drop-earrings",
-    name: "Luna Drop Earrings",
-    category: "earrings",
-    edits: ["bridal", "bridal-accessories"],
-    material: "Freshwater pearl · gold vermeil",
-    price: "£124",
-    image: "https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?auto=format&fit=crop&w=1600&q=90",
-    alternateImage: "https://images.unsplash.com/photo-1611085583191-a3b181a88401?auto=format&fit=crop&w=1600&q=90",
-  },
-  {
-    slug: "nocturne-pearl-drops",
-    name: "Nocturne Pearl Drops",
-    category: "earrings",
-    edits: ["bridal", "bridal-accessories", "chic-happens"],
-    material: "Cultured pearl · 18k gold plate",
-    price: "£136",
-    image: "https://images.unsplash.com/photo-1611085583191-a3b181a88401?auto=format&fit=crop&w=1600&q=90",
-    alternateImage: "https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?auto=format&fit=crop&w=1600&q=90",
-  },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   // --- The following are real pieces you have in stock (qty 1 each), added from your inventory database.
   // --- Placeholder photos below (borrowed from elsewhere in the catalog) — swap for your real photos when ready.
   {
