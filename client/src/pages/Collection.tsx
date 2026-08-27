@@ -7,7 +7,7 @@ import { collectionEdits, getEdit, piecesForEdit } from "../data/catalog";
 const collectionNotes: Record<string, { title: string; copy: string; image: string }> = {
   "something-blue": { title: "A little blue, held close.", copy: "The softest glint can be enough. Wear it as your quiet note, your borrowed colour, your own small piece of luck.", image: "https://images.unsplash.com/photo-1619119069152-a2b331eb392a?auto=format&fit=crop&w=1200&q=90" },
   "say-i-do": { title: "For the hand you hold.", copy: "Thoughtfully finished jewellery for the promise you make, the photographs you keep, and the everyday after the ceremony.", image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=1200&q=90" },
-  "bridal-accessories": { title: "The finishing touch.", copy: "Softly sculpted hair pieces and luminous pearl drops, designed to make the final detail feel entirely yours.", image: "/manus-storage/golden-hour-bridal-accessories-hero_fd3a30d3.jpg" },
+  "bridal-accessories": { title: "The finishing touch.", copy: "Softly sculpted hair pieces and luminous pearl drops, designed to make the final detail feel entirely yours.", image: "https://images.unsplash.com/photo-1611085583191-a3b181a88401?auto=format&fit=crop&w=1600&q=90" },
 };
 
 export default function Collection() {

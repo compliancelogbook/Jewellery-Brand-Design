@@ -1,4 +1,6 @@
 /** Golden Hour visual system: Mediterranean Keepsake Modernism — original product content only. */
+export type FinishOption = "gold" | "silver" | "rose-gold";
+
 export type Piece = {
   slug: string;
   name: string;
@@ -11,8 +13,20 @@ export type Piece = {
   alternateImage: string;
   tertiaryImage?: string;
   description?: string;
-  singleFinish?: boolean;
+  /** Only set this when the piece is genuinely made in more than one finish — otherwise it's derived from `material` below. */
+  finishes?: FinishOption[];
 };
+
+export const finishLabels: Record<FinishOption, string> = { gold: "Gold", silver: "Silver", "rose-gold": "Rose gold" };
+
+/** Falls back to reading the piece's own material description, so we never claim a finish that isn't real. */
+export function getFinishes(piece: Piece): FinishOption[] {
+  if (piece.finishes) return piece.finishes;
+  const material = piece.material.toLowerCase();
+  if (material.includes("rose gold")) return ["rose-gold"];
+  if (material.includes("silver")) return ["silver"];
+  return ["gold"];
+}
 
 export type EditSlug = "sola" | "bridal" | "something-blue" | "mother-of-the-bride" | "say-i-do" | "bridal-accessories" | "chic-happens" | "old-money-minimalist" | "christmas";
 export type CategorySlug = "rings" | "earrings" | "necklaces" | "bracelets" | "bridal-accessories";
@@ -28,12 +42,12 @@ export type CollectionEdit = {
 };
 
 export const collectionEdits: CollectionEdit[] = [
-  { slug: "sola", title: "Sola / Solstice", eyebrow: "Golden Hour / 2026", subtitle: "A study in sun, stone and the calm after a long lunch.", image: "/manus-storage/oriele-hero-mediterranean-tide_8af5f0e5.jpg" },
-  { slug: "bridal", title: "The Bridal Edit", eyebrow: "For every kind of yes", subtitle: "Pieces for the promises, the photographs and the people who make the day feel like yours.", image: "/manus-storage/oriele-editorial-sunroom_794fa073.jpg", children: ["something-blue", "mother-of-the-bride", "say-i-do", "bridal-accessories"] },
+  { slug: "sola", title: "Sola / Solstice", eyebrow: "Golden Hour / 2026", subtitle: "A study in sun, stone and the calm after a long lunch.", image: "https://images.unsplash.com/photo-1608508644127-ba99d7732fee?auto=format&fit=crop&w=1900&q=90" },
+  { slug: "bridal", title: "The Bridal Edit", eyebrow: "For every kind of yes", subtitle: "Pieces for the promises, the photographs and the people who make the day feel like yours.", image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=1600&q=90", children: ["something-blue", "mother-of-the-bride", "say-i-do", "bridal-accessories"] },
   { slug: "something-blue", title: "Something Blue", eyebrow: "The Bridal Edit / I", subtitle: "A cool glint, a blue note and a little luck to keep close.", image: "https://images.unsplash.com/photo-1619119069152-a2b331eb392a?auto=format&fit=crop&w=1600&q=90" },
   { slug: "mother-of-the-bride", title: "Mother of the Bride", eyebrow: "The Bridal Edit / II", subtitle: "Mother-of-pearl, soft lustre and the kind of pieces that hold a room quietly.", image: "https://images.unsplash.com/photo-1611085583191-a3b181a88401?auto=format&fit=crop&w=1600&q=90" },
   { slug: "say-i-do", title: "Say I Do", eyebrow: "The Bridal Edit / III", subtitle: "For the hand you hold, the vow you make and the rings that stay close.", image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=1600&q=90" },
-  { slug: "bridal-accessories", title: "Bridal Accessories", eyebrow: "The Bridal Edit / IV", subtitle: "Hair pieces, luminous drops and the finishing details that turn a look into a memory.", image: "/manus-storage/golden-hour-bridal-accessories-hero_fd3a30d3.jpg" },
+  { slug: "bridal-accessories", title: "Bridal Accessories", eyebrow: "The Bridal Edit / IV", subtitle: "Hair pieces, luminous drops and the finishing details that turn a look into a memory.", image: "https://images.unsplash.com/photo-1611085583191-a3b181a88401?auto=format&fit=crop&w=1600&q=90" },
   { slug: "chic-happens", title: "Chic Happens", eyebrow: "An after-hours edit", subtitle: "A little more shine for late tables, a good shirt and an unexpected invitation.", image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=1600&q=90" },
   { slug: "old-money-minimalist", title: "Old Money Minimalist", eyebrow: "The wardrobe edit", subtitle: "Clean lines, softened metals and the pieces you wear often enough to forget they are there.", image: "https://images.unsplash.com/photo-1589128777073-263566ae5e4d?auto=format&fit=crop&w=1600&q=90" },
   { slug: "christmas", title: "The Christmas Edit", eyebrow: "Gifts for the golden hour", subtitle: "For the stockings, the secret santas, and the one thing you actually wanted.", image: "https://res.cloudinary.com/dnp0sgoad/image/upload/v1787767314/reindeer-crystal-red-nose-studs-staged-master-concept-v1.png" },
@@ -41,10 +55,10 @@ export const collectionEdits: CollectionEdit[] = [
 
 export const categoryCollections: CategoryCollection[] = [
   { slug: "rings", type: "ring", title: "Rings", eyebrow: "Shop by category", subtitle: "Sculpted bands and small declarations, designed to become part of your hands’ story.", image: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?auto=format&fit=crop&w=1600&q=90", featureImage: "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?auto=format&fit=crop&w=1000&q=90" },
-  { slug: "earrings", type: "earrings", title: "Earrings", eyebrow: "Shop by category", subtitle: "A quiet movement of pearl, gold and light, made to catch the room without asking for it.", image: "/manus-storage/golden-hour-bridal-earring-closeup_19c54fe5.jpg", featureImage: "/manus-storage/golden-hour-evening-bridal-model_1eaa752e.jpg" },
-  { slug: "necklaces", type: "necklace", title: "Necklaces", eyebrow: "Shop by category", subtitle: "Fine chains and luminous pendants for the open collar, the everyday shirt and the late table.", image: "/manus-storage/oriele-product-aurora-disc_f884f487.jpg", featureImage: "/manus-storage/oriele-editorial-sunroom_794fa073.jpg" },
+  { slug: "earrings", type: "earrings", title: "Earrings", eyebrow: "Shop by category", subtitle: "A quiet movement of pearl, gold and light, made to catch the room without asking for it.", image: "https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?auto=format&fit=crop&w=1600&q=90", featureImage: "https://images.unsplash.com/photo-1611085583191-a3b181a88401?auto=format&fit=crop&w=1600&q=90" },
+  { slug: "necklaces", type: "necklace", title: "Necklaces", eyebrow: "Shop by category", subtitle: "Fine chains and luminous pendants for the open collar, the everyday shirt and the late table.", image: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=1100&q=85", featureImage: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=1600&q=90" },
   { slug: "bracelets", type: "bracelet", title: "Bracelets", eyebrow: "Shop by category", subtitle: "Easy pieces to stack, layer and live in, each with a softly considered finish.", image: "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?auto=format&fit=crop&w=1600&q=90", featureImage: "https://images.unsplash.com/photo-1589128777073-263566ae5e4d?auto=format&fit=crop&w=1000&q=90" },
-  { slug: "bridal-accessories", type: "accessory", title: "Bridal Accessories", eyebrow: "Shop by category", subtitle: "Pearl hair pieces and luminous finishing touches for promises, photographs and every moment in between.", image: "/manus-storage/golden-hour-bridal-accessories-hero_fd3a30d3.jpg", featureImage: "/manus-storage/golden-hour-pearl-hair-pin_b52e5475.jpg" },
+  { slug: "bridal-accessories", type: "accessory", title: "Bridal Accessories", eyebrow: "Shop by category", subtitle: "Pearl hair pieces and luminous finishing touches for promises, photographs and every moment in between.", image: "https://images.unsplash.com/photo-1611085583191-a3b181a88401?auto=format&fit=crop&w=1600&q=90", featureImage: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=1100&q=85" },
 ];
 
 export const pieces: Piece[] = [
@@ -56,7 +70,7 @@ export const pieces: Piece[] = [
     material: "Gold vermeil · amber glass",
     price: "£118",
     badge: "New",
-    image: "/manus-storage/oriele-product-aurora-disc_f884f487.jpg",
+    image: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=1100&q=85",
     alternateImage: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1100&q=85",
   },
   {
@@ -68,7 +82,6 @@ export const pieces: Piece[] = [
     price: "£54",
     badge: "Limited edition",
     description: "Add festive sparkle to your look with these gold-tone crystal reindeer stud earrings. Featuring pavé crystal detailing, sculpted antlers and a signature red crystal nose, secured with a secure butterfly back, for a playful Christmas look. Perfect for festive parties, seasonal outfits, Secret Santa gifts and Christmas stocking fillers.",
-    singleFinish: true,
     image: "https://res.cloudinary.com/dnp0sgoad/image/upload/v1787767144/reindeer-crystal-red-nose-studs-on-model-ear-macro-concept-v1.png",
     alternateImage: "https://res.cloudinary.com/dnp0sgoad/image/upload/v1787767299/reindeer-crystal-red-nose-studs-head-on-master-concept-v2.png",
     tertiaryImage: "https://res.cloudinary.com/dnp0sgoad/image/upload/v1787767314/reindeer-crystal-red-nose-studs-staged-master-concept-v1.png",
@@ -93,7 +106,7 @@ export const pieces: Piece[] = [
     material: "Gold vermeil · freshwater pearl",
     price: "£94",
     badge: "New",
-    image: "/manus-storage/oriele-product-pearl-orbit_13710701.jpg",
+    image: "https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?auto=format&fit=crop&w=1100&q=85",
     alternateImage: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=1100&q=85",
   },
   {
@@ -238,8 +251,8 @@ export const pieces: Piece[] = [
     material: "Freshwater pearl · gold-plated brass",
     price: "£68",
     badge: "Bridal accessory",
-    image: "/manus-storage/golden-hour-pearl-hair-pin_b52e5475.jpg",
-    alternateImage: "/manus-storage/golden-hour-bridal-accessories-hero_fd3a30d3.jpg",
+    image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=1100&q=85",
+    alternateImage: "https://images.unsplash.com/photo-1611085583191-a3b181a88401?auto=format&fit=crop&w=1600&q=90",
   },
   {
     slug: "marlowe-halo-headband",
@@ -249,8 +262,8 @@ export const pieces: Piece[] = [
     material: "Satin · mother-of-pearl · crystal",
     price: "£142",
     badge: "Limited run",
-    image: "/manus-storage/golden-hour-crystal-halo-headband_e08e685d.jpg",
-    alternateImage: "/manus-storage/golden-hour-bridal-accessories-hero_fd3a30d3.jpg",
+    image: "https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?auto=format&fit=crop&w=1100&q=85",
+    alternateImage: "https://images.unsplash.com/photo-1611085583191-a3b181a88401?auto=format&fit=crop&w=1600&q=90",
   },
   {
     slug: "luna-drop-earrings",
@@ -259,8 +272,8 @@ export const pieces: Piece[] = [
     edits: ["bridal", "bridal-accessories"],
     material: "Freshwater pearl · gold vermeil",
     price: "£124",
-    image: "/manus-storage/golden-hour-bridal-earring-closeup_19c54fe5.jpg",
-    alternateImage: "/manus-storage/golden-hour-evening-bridal-model_1eaa752e.jpg",
+    image: "https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?auto=format&fit=crop&w=1600&q=90",
+    alternateImage: "https://images.unsplash.com/photo-1611085583191-a3b181a88401?auto=format&fit=crop&w=1600&q=90",
   },
   {
     slug: "nocturne-pearl-drops",
@@ -269,8 +282,8 @@ export const pieces: Piece[] = [
     edits: ["bridal", "bridal-accessories", "chic-happens"],
     material: "Cultured pearl · 18k gold plate",
     price: "£136",
-    image: "/manus-storage/golden-hour-evening-bridal-model_1eaa752e.jpg",
-    alternateImage: "/manus-storage/golden-hour-bridal-earring-closeup_19c54fe5.jpg",
+    image: "https://images.unsplash.com/photo-1611085583191-a3b181a88401?auto=format&fit=crop&w=1600&q=90",
+    alternateImage: "https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?auto=format&fit=crop&w=1600&q=90",
   },
 ];
 

@@ -7,21 +7,21 @@ const signals = [
     folio: "01",
     title: "Silver, with intent.",
     copy: "The new statement is built in line, not volume. Let a cuff sit alone against a softened sleeve, or let a signet bring a little weight to an otherwise quiet hand.",
-    image: "/manus-storage/golden-hour-journal-aw26-cuff_b3f6e569.jpg",
+    image: "https://images.unsplash.com/photo-1608508644127-ba99d7732fee?auto=format&fit=crop&w=1200&q=90",
     alt: "Brushed silver cuff and signet ring worn with a charcoal jacket",
   },
   {
     folio: "02",
     title: "Pearls after dark.",
     copy: "Less debutante, more deliberate. This season’s pearls are irregular, layered, and held close to dark tailoring, sheer knits and bare skin.",
-    image: "/manus-storage/golden-hour-journal-aw26-pearl_363f7573.jpg",
+    image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=1200&q=90",
     alt: "Pearl choker and silver jewellery arranged with black silk",
   },
   {
     folio: "03",
     title: "A line of light.",
     copy: "Slender chains and small celestial stones make their point in motion. Consider the neckline an empty margin: leave space around what you choose.",
-    image: "/manus-storage/golden-hour-journal-aw26-celestial_1a6cbd38.jpg",
+    image: "https://images.unsplash.com/photo-1619119069152-a2b331eb392a?auto=format&fit=crop&w=1200&q=90",
     alt: "Celestial inspired silver lariat necklace arranged on black sheer fabric",
   },
 ];
@@ -29,9 +29,9 @@ const signals = [
 export default function Journal() {
   return <article className="journal-page">
     <section className="journal-hero">
-      <div className="journal-hero__folio"><span className="journal-hero__brand"><img src="/manus-storage/oriele-orbit-mark_948ea730.png" alt="" />Golden Hour London / Journal</span><i /><span>Issue 01 / AW 26</span></div>
+      <div className="journal-hero__folio"><span className="journal-hero__brand"><svg className="mark" viewBox="0 0 26 26" fill="none" aria-hidden="true"><circle cx="13" cy="13" r="3.4" fill="currentColor" /><circle cx="13" cy="13" r="10" stroke="currentColor" strokeWidth="1" /></svg>Golden Hour London / Journal</span><i /><span>Issue 01 / AW 26</span></div>
       <div className="journal-hero__title"><span className="eyebrow">The AW/26 edit</span><h1>After the<br /><em>light.</em></h1><p>Three jewellery notes for the season of ink, texture and a little more intention.</p></div>
-      <div className="journal-hero__visual"><img src="/manus-storage/golden-hour-journal-aw26-hero_6267ca4a.jpg" alt="Woman in a black silk jacket wearing sculptural silver earrings" /><span>Fashion note / 04 minute read</span></div>
+      <div className="journal-hero__visual"><img src="https://images.unsplash.com/photo-1635767798638-3e25273a8236?auto=format&fit=crop&w=1600&q=90" alt="Woman in a black silk jacket wearing sculptural silver earrings" /><span>Fashion note / 04 minute read</span></div>
       <p className="journal-hero__sidecopy">Not a forecast. More a way of looking: at metal, at proportion, at the small decisions that alter the whole mood of an outfit.</p>
     </section>
 

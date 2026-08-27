@@ -8,7 +8,7 @@ import { useCart } from "@/contexts/CartContext";
 import { useFavourites } from "@/contexts/FavouritesContext";
 import { useStock } from "@/contexts/StockContext";
 import { getStockLabel, getStockStatus } from "@/lib/stock";
-import { findPiece, pieces } from "../data/catalog";
+import { findPiece, getEdit, pieces } from "../data/catalog";
 
 export default function Product() {
   const params = useParams<{ slug: string }>();
@@ -22,16 +22,18 @@ export default function Product() {
   const stockLabel = getStockLabel(stockStatus, stock);
   const isOutOfStock = stockStatus === "out-of-stock";
   const isRing = piece.category === "ring";
+  const isEarrings = piece.category === "earrings";
+  const primaryEdit = getEdit(piece.edits[0]);
   const addToBag = () => { addItem(piece, quantity, isRing ? selectedSize : undefined); openCart(); };
 
   return <>
     <section className="product-page">
-      <div className="product-page__crumb"><Link href="/">Home</Link><span>/</span><Link href="/collections/sola">Jewellery</Link><span>/</span><span>{piece.name}</span></div>
+      <div className="product-page__crumb"><Link href="/">Home</Link><span>/</span><Link href={`/collections/${primaryEdit.slug}`}>{primaryEdit.title}</Link><span>/</span><span>{piece.name}</span></div>
       <div className="product-page__layout">
         <div className="product-media" data-slug={piece.slug}>
           <img src={piece.image} alt={piece.name} />
           <img src={piece.alternateImage} alt={`${piece.name} alternate view`} />
-          <img src={piece.tertiaryImage ?? "/manus-storage/oriele-editorial-sunroom_794fa073.jpg"} alt={piece.tertiaryImage ? `${piece.name} styled view` : "Jewellery styled in a quiet limestone sunroom"} />
+          <img src={piece.tertiaryImage ?? "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=1600&q=90"} alt={piece.tertiaryImage ? `${piece.name} styled view` : "Jewellery styled in a quiet limestone sunroom"} />
           <div className="product-media__video"><span>Studio material study</span><i>◌</i></div>
         </div>
         <aside className="product-buy">
@@ -44,11 +46,11 @@ export default function Product() {
           <div className="product-buy__quantity"><span>Quantity</span><div><button onClick={() => setQuantity(Math.max(1, quantity - 1))} aria-label="Decrease quantity"><Minus size={15} /></button><b>{quantity}</b><button onClick={() => setQuantity(quantity + 1)} aria-label="Increase quantity"><Plus size={15} /></button></div></div>
           <button className="button button--ink product-buy__add" data-magnetic disabled={isOutOfStock} onClick={addToBag}>{isOutOfStock ? "Out of stock" : <>Add to bag <Check size={15} strokeWidth={1.5} /></>}</button>
           <button className={`product-buy__wish ${isSaved(piece.slug) ? "is-saved" : ""}`} data-magnetic onClick={() => togglePiece(piece)}><Heart size={18} fill={isSaved(piece.slug) ? "currentColor" : "none"} strokeWidth={1.4} /> {isSaved(piece.slug) ? "Saved to your pieces" : "Save for later"}</button>
-          <ul className="product-buy__notes"><li><Check size={15} strokeWidth={1.5} />Finished in a considered small run</li><li><Check size={15} strokeWidth={1.5} />Packed simply, ready to give</li><li><Check size={15} strokeWidth={1.5} />14-day returns on unworn pieces</li></ul>
+          <ul className="product-buy__notes"><li><Check size={15} strokeWidth={1.5} />Finished in a considered small run</li><li><Check size={15} strokeWidth={1.5} />Packed simply, ready to give</li><li><Check size={15} strokeWidth={1.5} />{isEarrings ? "Full refund on faulty items" : "30-day returns on unworn pieces"}</li></ul>
           <div className="product-buy__accordions">
             <details open><summary>Details <span>+</span></summary><p>Designed as easy everyday jewellery with a tactile, slightly irregular surface. Finished and packed by hand.</p></details>
             {isRing && <RingSizeGuide />}
-            <details><summary>Delivery & returns <span>+</span></summary><p>UK delivery is complimentary above £100. Pieces may be returned unworn within 14 days of receipt.</p></details>
+            <details><summary>Delivery & returns <span>+</span></summary><p>UK delivery is complimentary above £50. {isEarrings ? "For hygiene reasons, earrings cannot be returned or exchanged unless faulty — faulty items are eligible for a full refund or replacement." : "Pieces may be returned unworn within 30 days of receipt."}</p></details>
             <details><summary>Care <span>+</span></summary><p>Store in the pouch provided and clean gently with a dry cloth.</p></details>
           </div>
           <button className="product-buy__share"><Share2 size={15} strokeWidth={1.4} /> Share this piece</button>

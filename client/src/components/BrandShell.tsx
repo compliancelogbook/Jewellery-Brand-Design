@@ -18,7 +18,12 @@ const nav = [
 ];
 
 function OrbitMark() {
-  return <img className="mark" src="/manus-storage/oriele-orbit-mark_948ea730.png" alt="" />;
+  return (
+    <svg className="mark" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+      <circle cx="13" cy="13" r="3.4" fill="currentColor" />
+      <circle cx="13" cy="13" r="10" stroke="currentColor" strokeWidth="1" />
+    </svg>
+  );
 }
 
 function BrandLockup() {
@@ -46,7 +51,7 @@ export default function BrandShell({ children }: { children: ReactNode }) {
   return (
     <div className="site-shell">
       <div className="shipping-ticker" role="note">
-        <div className="shipping-ticker__track"><span>Complimentary UK delivery over £100</span><i /> <span>Jewellery made in small, considered runs</span><i /> <span>Complimentary UK delivery over £100</span></div>
+        <div className="shipping-ticker__track"><span>Complimentary UK delivery over £50</span><i /> <span>Jewellery made in small, considered runs</span><i /> <span>Complimentary UK delivery over £50</span></div>
       </div>
       <header className={`site-header ${isShopOpen ? "site-header--menu-open" : isHome && !isScrolled ? "site-header--over" : "site-header--solid"}`}>
         <Link href="/" className="wordmark" aria-label="Golden Hour home"><BrandLockup /></Link>
@@ -83,8 +88,8 @@ function Footer() {
     <footer className="site-footer">
       <div className="site-footer__identity"><Link href="/" className="wordmark"><BrandLockup /></Link><p>Jewellery for the way you mark a day.</p></div>
       <form className="footer-newsletter" onSubmit={(event) => event.preventDefault()}><label htmlFor="footer-email">Studio letter</label><div><input id="footer-email" type="email" placeholder="Email address" /><button type="submit">Join</button></div></form>
-      <div className="site-footer__links"><div><span>Visit</span><Link href="/collections/sola">The collection</Link><Link href="/collections/bridal">Occasion pieces</Link><Link href="/journal">The journal</Link><Link href="/pages/our-story">The studio</Link></div><div><span>Help</span><Link href="/help/size-guide">Size guide</Link><a href="#delivery">Delivery & returns</a><a href="#care">Care guide</a><a href="mailto:studio@goldenhour.example">Contact us</a></div></div>
-      <div className="site-footer__fineprint"><span>© 2026 Golden Hour London</span><span>Made with care in the United Kingdom</span><span>Terms · Privacy</span></div>
+      <div className="site-footer__links"><div><span>Visit</span><Link href="/collections/sola">The collection</Link><Link href="/collections/bridal">Occasion pieces</Link><Link href="/journal">The journal</Link><Link href="/pages/our-story">The studio</Link></div><div><span>Help</span><Link href="/help/size-guide">Size guide</Link><Link href="/help/delivery-returns">Delivery & returns</Link><Link href="/help/care-guide">Care guide</Link><a href="mailto:hello@goldenhourlondon.co.uk">Contact us</a></div></div>
+      <div className="site-footer__fineprint"><span>© 2026 Golden Hour London</span><span>Made with care in the United Kingdom</span><span><Link href="/pages/terms">Terms</Link> · <Link href="/pages/privacy">Privacy</Link></span></div>
     </footer>
   );
 }
