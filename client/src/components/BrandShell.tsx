@@ -9,6 +9,7 @@ import { useFavourites } from "@/contexts/FavouritesContext";
 import { categoryCollections } from "@/data/catalog";
 
 const nav = [
+  { label: "New In", href: "/collections/new-in" },
   { label: "New: Solstice", href: "/collections/sola" },
   { label: "The Bridal Edit", href: "/collections/bridal" },
   { label: "Chic Happens", href: "/collections/chic-happens" },

@@ -3,7 +3,7 @@ import { ArrowLeft, ArrowRight, MoveUpRight, Sparkles } from "lucide-react";
 import { useRef } from "react";
 import { Link } from "wouter";
 import ProductCard from "@/components/ProductCard";
-import { categoryCollections, pieces } from "../data/catalog";
+import { categoryCollections, piecesForEdit, pieces } from "../data/catalog";
 
 function Rail({ eyebrow, title, copy, items }: { eyebrow?: string; title: string; copy: string; items: typeof pieces }) {
   const rail = useRef<HTMLDivElement>(null);
@@ -20,7 +20,7 @@ function CategoryRail() {
 export default function Home() {
   return <>
     <section className="hero"><img src="https://images.unsplash.com/photo-1608508644127-ba99d7732fee?auto=format&fit=crop&w=1900&q=90" alt="Deep teal Mediterranean water moving around a pale limestone shore" /><div className="hero__veil" /><div className="hero__signature"><svg viewBox="0 0 26 26" fill="none" aria-hidden="true"><circle cx="13" cy="13" r="3.4" fill="currentColor" /><circle cx="13" cy="13" r="10" stroke="currentColor" strokeWidth="1" /></svg><span>Golden Hour / Solstice ’26</span></div><div className="hero__copy"><span className="hero__rating"><Sparkles size={13} strokeWidth={1.1} /> The Solstice Edition</span><h1>Jewellery for a<br />well-kept summer.</h1><p>Small rituals in gold, made to meet every improbable plan.</p><div className="hero__actions"><Link href="/collections/sola" className="button button--light" data-magnetic>Shop Solstice</Link><Link href="/collections/bridal" className="button button--ghost" data-magnetic>For the occasion</Link></div></div><div className="hero__index"><span>01</span><i /><span>05</span></div></section>
-    <Rail eyebrow="Just arrived" title="Ebb & Ember" copy="A limited collection shaped by shade, stone and the first hour of evening." items={pieces.slice(0, 4)} />
+    <Rail eyebrow="Just arrived" title="New In" copy="The latest pieces to join the studio, added as they're made." items={piecesForEdit("new-in")} />
     <CategoryRail />
     <section className="split-collection reveal"><Link href="/collections/sola" className="split-collection__visual split-collection__visual--left"><img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=1600&q=90" alt="Woman in ivory wearing Golden Hour jewellery in a limestone sunroom" /><span>Necklaces & chains <MoveUpRight size={17} strokeWidth={1.4} /></span></Link><Link href="/collections/sola" className="split-collection__visual split-collection__visual--right"><img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=1600&q=90" alt="Gold jewellery arranged as a still life" /><span>Rings & small things <MoveUpRight size={17} strokeWidth={1.4} /></span></Link><div className="split-collection__caption"><span className="sun-star-divider" aria-hidden="true">✦</span><span className="eyebrow">A small observance</span><h2>Light, held close.</h2><p>Fine chains, tactile pearls and softly irregular forms made for days that ask a little more of you.</p><Link href="/collections/sola" className="text-link">See all pieces <MoveUpRight size={16} strokeWidth={1.4} /></Link></div></section>
     <Rail eyebrow="Made to keep" title="The familiar pieces" copy="The ones you reach for without looking; the ones that hold their own." items={pieces.slice(4, 8)} />

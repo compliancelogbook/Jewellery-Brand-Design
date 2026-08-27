@@ -28,7 +28,7 @@ export function getFinishes(piece: Piece): FinishOption[] {
   return ["gold"];
 }
 
-export type EditSlug = "sola" | "bridal" | "something-blue" | "mother-of-the-bride" | "say-i-do" | "bridal-accessories" | "chic-happens" | "old-money-minimalist" | "christmas";
+export type EditSlug = "new-in" | "sola" | "bridal" | "something-blue" | "mother-of-the-bride" | "say-i-do" | "bridal-accessories" | "chic-happens" | "old-money-minimalist" | "christmas";
 export type CategorySlug = "rings" | "earrings" | "necklaces" | "bracelets" | "bridal-accessories";
 export type CategoryCollection = { slug: CategorySlug; type: NonNullable<Piece["category"]>; title: string; eyebrow: string; subtitle: string; image: string; featureImage: string };
 
@@ -42,6 +42,7 @@ export type CollectionEdit = {
 };
 
 export const collectionEdits: CollectionEdit[] = [
+  { slug: "new-in", title: "New In", eyebrow: "Fresh to the studio", subtitle: "The latest pieces, just added.", image: "https://res.cloudinary.com/dnp0sgoad/image/upload/v1787830007/Burgundy-Red_Velvet_bow-Gold-Tone-Studs-Model.png" },
   { slug: "sola", title: "Sola / Solstice", eyebrow: "Golden Hour / 2026", subtitle: "A study in sun, stone and the calm after a long lunch.", image: "https://images.unsplash.com/photo-1608508644127-ba99d7732fee?auto=format&fit=crop&w=1900&q=90" },
   { slug: "bridal", title: "The Bridal Edit", eyebrow: "For every kind of yes", subtitle: "Pieces for the promises, the photographs and the people who make the day feel like yours.", image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=1600&q=90", children: ["something-blue", "mother-of-the-bride", "say-i-do", "bridal-accessories"] },
   { slug: "something-blue", title: "Something Blue", eyebrow: "The Bridal Edit / I", subtitle: "A cool glint, a blue note and a little luck to keep close.", image: "https://images.unsplash.com/photo-1619119069152-a2b331eb392a?auto=format&fit=crop&w=1600&q=90" },
@@ -74,10 +75,22 @@ export const pieces: Piece[] = [
     alternateImage: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1100&q=85",
   },
   {
+    slug: "burgundy-bow-stud-earrings",
+    name: "Burgundy Velvet Bow Stud Earrings",
+    category: "earrings",
+    edits: ["christmas", "new-in"],
+    material: "Gold-tone brass · burgundy velvet",
+    price: "£48",
+    badge: "New",
+    description: "A softly tailored velvet bow in a rich burgundy, finished with gold-tone hardware — a festive stud with just enough polish for the party season.",
+    image: "https://res.cloudinary.com/dnp0sgoad/image/upload/v1787830007/Burgundy-Red_Velvet_bow-Gold-Tone-Studs-Model.png",
+    alternateImage: "https://res.cloudinary.com/dnp0sgoad/image/upload/v1787830027/burgundy-red-velvet_bow-gold-tone-stud-earrings.png",
+  },
+  {
     slug: "reindeer-red-nose-studs",
     name: "Gold Crystal Reindeer Stud Earrings",
     category: "earrings",
-    edits: ["christmas"],
+    edits: ["christmas", "new-in"],
     material: "Gold-plated brass · red crystal",
     price: "£54",
     badge: "Limited edition",
@@ -90,7 +103,7 @@ export const pieces: Piece[] = [
     slug: "vesper-pearl-drops",
     name: "Vesper Pearl Drops",
     category: "earrings",
-    edits: ["bridal", "mother-of-the-bride"],
+    edits: ["bridal", "mother-of-the-bride", "new-in"],
     material: "18k gold vermeil · pear-cut cubic zirconia · South Sea pearl",
     price: "£168",
     badge: "Signature piece",
