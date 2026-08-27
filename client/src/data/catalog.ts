@@ -38,7 +38,7 @@ export function getFinishes(piece: Piece): FinishOption[] {
   return ["gold"];
 }
 
-export type EditSlug = "new-in" | "personal" | "sola" | "bridal" | "something-blue" | "mother-of-the-bride" | "say-i-do" | "bridal-accessories" | "chic-happens" | "old-money-minimalist" | "christmas";
+export type EditSlug = "new-in" | "personal" | "sola" | "bridal" | "something-blue" | "mother-of-the-bride" | "say-i-do" | "honeymoon" | "bridal-accessories" | "chic-happens" | "old-money-minimalist" | "christmas";
 export type CategorySlug = "rings" | "earrings" | "necklaces" | "bracelets" | "bridal-accessories";
 export type CategoryCollection = { slug: CategorySlug; type: NonNullable<Piece["category"]>; title: string; eyebrow: string; subtitle: string; image: string; featureImage: string };
 
@@ -55,10 +55,11 @@ export const collectionEdits: CollectionEdit[] = [
   { slug: "new-in", title: "New In", eyebrow: "Fresh to the studio", subtitle: "The latest pieces, just added.", image: "https://res.cloudinary.com/dnp0sgoad/image/upload/v1787830007/Burgundy-Red_Velvet_bow-Gold-Tone-Studs-Model.png" },
   { slug: "personal", title: "PERSONAL", eyebrow: "Let's get", subtitle: "Seven initials to choose from — a small, permanent way to keep someone close.", image: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=1600&q=90" },
   { slug: "sola", title: "Golden Hour", eyebrow: "The core collection", subtitle: "A study in sun, stone and the calm after a long lunch.", image: "https://images.unsplash.com/photo-1608508644127-ba99d7732fee?auto=format&fit=crop&w=1900&q=90" },
-  { slug: "bridal", title: "The Bridal Edit", eyebrow: "For every kind of yes", subtitle: "Pieces for the promises, the photographs and the people who make the day feel like yours.", image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=1600&q=90", children: ["something-blue", "mother-of-the-bride", "say-i-do", "bridal-accessories"] },
+  { slug: "bridal", title: "The Bridal Edit", eyebrow: "For every kind of yes", subtitle: "Pieces for the promises, the photographs and the people who make the day feel like yours.", image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=1600&q=90", children: ["something-blue", "mother-of-the-bride", "say-i-do", "honeymoon", "bridal-accessories"] },
   { slug: "something-blue", title: "Something Blue", eyebrow: "The Bridal Edit / I", subtitle: "A cool glint, a blue note and a little luck to keep close.", image: "https://images.unsplash.com/photo-1619119069152-a2b331eb392a?auto=format&fit=crop&w=1600&q=90" },
   { slug: "mother-of-the-bride", title: "Mother of the Bride", eyebrow: "The Bridal Edit / II", subtitle: "Mother-of-pearl, soft lustre and the kind of pieces that hold a room quietly.", image: "https://images.unsplash.com/photo-1611085583191-a3b181a88401?auto=format&fit=crop&w=1600&q=90" },
   { slug: "say-i-do", title: "Say I Do", eyebrow: "The Bridal Edit / III", subtitle: "For the hand you hold, the vow you make and the rings that stay close.", image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=1600&q=90" },
+  { slug: "honeymoon", title: "The Honeymoon & Back", eyebrow: "Love you to", subtitle: "For the airport gate, the villa balcony and every ordinary day once the suitcases are unpacked.", image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=1600&q=90" },
   { slug: "bridal-accessories", title: "Bridal Accessories", eyebrow: "The Bridal Edit / IV", subtitle: "Hair pieces, luminous drops and the finishing details that turn a look into a memory.", image: "https://images.unsplash.com/photo-1611085583191-a3b181a88401?auto=format&fit=crop&w=1600&q=90" },
   { slug: "chic-happens", title: "Chic Happens", eyebrow: "An after-hours edit", subtitle: "A little more shine for late tables, a good shirt and an unexpected invitation.", image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=1600&q=90" },
   { slug: "old-money-minimalist", title: "Old Money Minimalist", eyebrow: "The wardrobe edit", subtitle: "Clean lines, softened metals and the pieces you wear often enough to forget they are there.", image: "https://images.unsplash.com/photo-1589128777073-263566ae5e4d?auto=format&fit=crop&w=1600&q=90" },
@@ -233,7 +234,7 @@ export const pieces: Piece[] = [
     slug: "promise-pave-ring",
     name: "Promise Pave Ring",
     category: "ring",
-    edits: ["bridal", "say-i-do"],
+    edits: ["bridal", "say-i-do", "honeymoon"],
     material: "Recycled silver · cubic zirconia",
     price: "£118",
     image: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?auto=format&fit=crop&w=1100&q=85",
@@ -243,7 +244,7 @@ export const pieces: Piece[] = [
     slug: "heirloom-signature-ring",
     name: "Heirloom Signet Ring",
     category: "ring",
-    edits: ["old-money-minimalist", "say-i-do"],
+    edits: ["old-money-minimalist", "say-i-do", "honeymoon"],
     material: "Recycled silver · hand-finished",
     price: "£132",
     badge: "Studio piece",
@@ -709,7 +710,7 @@ export const pieces: Piece[] = [
 export const findPiece = (slug: string) => pieces.find((piece) => piece.slug === slug) ?? pieces[0];
 export const getEdit = (slug: string) => collectionEdits.find((edit) => edit.slug === slug) ?? collectionEdits[0];
 export const piecesForEdit = (slug: EditSlug) => {
-  if (slug === "bridal") return pieces.filter((piece) => piece.edits.includes("bridal") || piece.edits.some((edit) => ["something-blue", "mother-of-the-bride", "say-i-do", "bridal-accessories"].includes(edit)));
+  if (slug === "bridal") return pieces.filter((piece) => piece.edits.includes("bridal") || piece.edits.some((edit) => ["something-blue", "mother-of-the-bride", "say-i-do", "honeymoon", "bridal-accessories"].includes(edit)));
   if (slug === "new-in") return pieces.filter(isNewIn);
   return pieces.filter((piece) => piece.edits.includes(slug));
 };
