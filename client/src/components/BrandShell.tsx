@@ -80,7 +80,7 @@ function Footer() {
     <footer className="site-footer">
       <div className="site-footer__identity"><Link href="/" className="wordmark"><BrandLockup /></Link><p>Jewellery for the way you mark a day.</p></div>
       <form className="footer-newsletter" onSubmit={(event) => event.preventDefault()}><label htmlFor="footer-email">Studio letter</label><div><input id="footer-email" type="email" placeholder="Email address" /><button type="submit">Join</button></div></form>
-      <div className="site-footer__links"><div><span>Visit</span><Link href="/collections/sola">The collection</Link><Link href="/collections/bridal">Occasion pieces</Link><Link href="/journal">The journal</Link></div><div><span>Help</span><Link href="/help/size-guide">Size guide</Link><Link href="/help/delivery-returns">Delivery & returns</Link><Link href="/help/care-guide">Care guide</Link><a href="mailto:hello@cherishedbyjade.co.uk">Contact us</a></div></div>
+      <div className="site-footer__links"><div><span>Visit</span><Link href="/collections/sola">The collection</Link><Link href="/collections/bridal">Occasion pieces</Link><Link href="/journal">The journal</Link></div><div><span>Help</span><Link href="/help/size-guide">Size guide</Link><Link href="/help/delivery-returns">Delivery & returns</Link><Link href="/help/care-guide">Care guide</Link><a href="mailto:hello@cherishedbyjade.com">Contact us</a></div></div>
       <div className="site-footer__fineprint"><span>© 2026 Cherished by Jade</span><span>Made with care in the United Kingdom</span><span><Link href="/pages/terms">Terms</Link> · <Link href="/pages/privacy">Privacy</Link></span></div>
     </footer>
   );
