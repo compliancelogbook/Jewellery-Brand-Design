@@ -18,17 +18,8 @@ const nav = [
   { label: "The Christmas Edit", href: "/collections/christmas" },
 ];
 
-function OrbitMark() {
-  return (
-    <svg className="mark" viewBox="0 0 26 26" fill="none" aria-hidden="true">
-      <circle cx="13" cy="13" r="3.4" fill="currentColor" />
-      <circle cx="13" cy="13" r="10" stroke="currentColor" strokeWidth="1" />
-    </svg>
-  );
-}
-
 function BrandLockup() {
-  return <><OrbitMark /><span className="wordmark__lockup"><span className="wordmark__name">Cherished</span><em>by Jade</em></span></>;
+  return <span className="wordmark__lockup"><span className="wordmark__name">Cherished</span><em>by Jade</em></span>;
 }
 
 export default function BrandShell({ children }: { children: ReactNode }) {
