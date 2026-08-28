@@ -67,3 +67,12 @@ insert into product_size_stock (slug, size, stock) values
   ('heirloom-signature-ring', 'XS', 0), ('heirloom-signature-ring', 'S', 1), ('heirloom-signature-ring', 'M', 2), ('heirloom-signature-ring', 'L', 1), ('heirloom-signature-ring', 'XL', 0),
   ('bezel-crystal-station-ring', 'XS', 0), ('bezel-crystal-station-ring', 'S', 0), ('bezel-crystal-station-ring', 'M', 1), ('bezel-crystal-station-ring', 'L', 0), ('bezel-crystal-station-ring', 'XL', 0)
 on conflict (slug, size) do nothing;
+
+-- Everyone who has entered their email for the WELCOME10 "10% off" code, via the
+-- discreet tab on the storefront (see client/src/components/PromoTab.tsx). This is
+-- just a record for your subscriber list / to stop the same address re-claiming the
+-- code — the email itself is sent live through Resend, not from this table.
+create table if not exists newsletter_subscribers (
+  email text primary key,
+  subscribed_at timestamptz not null default now()
+);

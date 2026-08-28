@@ -7,6 +7,7 @@ import path from "node:path";
 import { defineConfig, type Plugin, type ViteDevServer } from "vite";
 import { vitePluginManusRuntime } from "vite-plugin-manus-runtime";
 import { getAllStock, getSizeStockForSlug, getStockForSlug } from "./server/stock";
+import { subscribeEmail } from "./server/subscribe";
 
 // =============================================================================
 // Manus Debug Collector - Vite Plugin
@@ -249,7 +250,46 @@ function vitePluginStockApi(): Plugin {
   };
 }
 
-const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector(), vitePluginStorageProxy(), vitePluginStockApi()];
+// Mirrors the /api/subscribe route registered in server/index.ts for production,
+// so `pnpm run dev` (pure Vite, no Express) can send the welcome code too.
+function vitePluginSubscribeApi(): Plugin {
+  return {
+    name: "subscribe-api",
+    configureServer(server: ViteDevServer) {
+      server.middlewares.use("/api/subscribe", async (req, res) => {
+        if (req.method !== "POST") {
+          res.writeHead(405, { "Content-Type": "application/json" });
+          res.end(JSON.stringify({ error: "Method not allowed" }));
+          return;
+        }
+
+        let body = "";
+        req.on("data", (chunk) => {
+          body += chunk;
+        });
+        req.on("end", async () => {
+          try {
+            const parsed = JSON.parse(body || "{}");
+            const email = typeof parsed?.email === "string" ? parsed.email : "";
+            const result = await subscribeEmail(email);
+            if ("error" in result) {
+              res.writeHead(result.status, { "Content-Type": "application/json" });
+              res.end(JSON.stringify({ error: result.error }));
+              return;
+            }
+            res.writeHead(200, { "Content-Type": "application/json" });
+            res.end(JSON.stringify(result.data));
+          } catch {
+            res.writeHead(400, { "Content-Type": "application/json" });
+            res.end(JSON.stringify({ error: "Invalid request" }));
+          }
+        });
+      });
+    },
+  };
+}
+
+const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector(), vitePluginStorageProxy(), vitePluginStockApi(), vitePluginSubscribeApi()];
 
 export default defineConfig({
   plugins,

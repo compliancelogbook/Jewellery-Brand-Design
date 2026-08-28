@@ -4,6 +4,7 @@ import { createServer } from "http";
 import path from "path";
 import { fileURLToPath } from "url";
 import { getAllStock, getSizeStockForSlug, getStockForSlug } from "./stock";
+import { subscribeEmail } from "./subscribe";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -11,6 +12,15 @@ const __dirname = path.dirname(__filename);
 async function startServer() {
   const app = express();
   const server = createServer(app);
+  app.use(express.json());
+
+  // Email sign-up: sends the WELCOME10 code via Resend and records the subscriber.
+  app.post("/api/subscribe", async (req, res) => {
+    const email = typeof req.body?.email === "string" ? req.body.email : "";
+    const result = await subscribeEmail(email);
+    if ("error" in result) return res.status(result.status).json({ error: result.error });
+    res.json(result.data);
+  });
 
   // Live stock levels, backed by Supabase. Returns an empty result instead of
   // erroring when Supabase isn't configured yet, so the site keeps working

@@ -133,22 +133,27 @@ button:focus-visible,a:focus-visible,input:focus-visible,summary:focus-visible {
 .ring-size-guide { border-bottom:1px solid var(--line); }.ring-size-guide summary { display:flex; align-items:center; justify-content:space-between; padding:14px 0; cursor:pointer; font-size:11px; font-weight:700; letter-spacing:.09em; text-transform:uppercase; }.ring-size-guide summary::-webkit-details-marker { display:none; }.ring-size-guide summary span:last-child { transition:transform .25s var(--ease); }.ring-size-guide[open] summary span:last-child { transform:rotate(45deg); }.ring-size-guide__content { padding:3px 0 20px; }.ring-size-guide__intro { display:grid; grid-template-columns:37px 1fr; gap:12px; align-items:start; margin-bottom:16px; }.ring-size-guide__mark { width:31px; height:31px; display:grid; place-items:center; border:1px solid var(--mineral); border-radius:50%; color:var(--mineral); font-size:20px; }.ring-size-guide__intro .eyebrow { margin-top:2px; color:var(--mineral); }.ring-size-guide__intro p { margin:5px 0 0; color:var(--muted); font-size:11px; line-height:1.55; }.ring-size-guide__table-wrap { overflow-x:auto; border:1px solid var(--line); }.ring-size-guide table { width:100%; min-width:330px; border-collapse:collapse; font-size:10px; }.ring-size-guide th,.ring-size-guide td { padding:8px 7px; text-align:left; border-bottom:1px solid var(--line); }.ring-size-guide th { background:var(--chalk); font-size:8px; letter-spacing:.08em; text-transform:uppercase; }.ring-size-guide tbody tr:last-child td { border-bottom:0; }.ring-size-guide td:first-child { font-family:var(--display); font-size:10px; }.ring-size-guide__tips { display:grid; grid-template-columns:1fr 1fr; gap:17px; margin-top:17px; }.ring-size-guide__tips .eyebrow { color:var(--mineral); margin-bottom:7px; }.ring-size-guide__tips ol { padding-left:15px; margin:0; font-size:10px; line-height:1.65; }.ring-size-guide__tips p { margin:0; color:var(--muted); font-size:10px; line-height:1.65; }
 @media (max-width:540px) { .ring-size-guide__tips { grid-template-columns:1fr; gap:14px; }.ring-size-guide__content { padding-bottom:17px; }.ring-size-guide th,.ring-size-guide td { padding:7px 6px; } }
 
-/* Promo popup: scroll-triggered scratch-to-reveal discount, shown once per visitor. */
+/* Promo: a discreet always-visible tab that opens an email-capture form for a discount code. */
+.promo-tab { position:fixed; z-index:60; left:24px; bottom:24px; display:flex; align-items:center; gap:10px; padding:13px 16px; background:var(--paper); border:1px solid var(--ink); box-shadow:0 10px 30px rgba(0,0,0,.14); font-family:var(--display); font-weight:500; font-size:13px; letter-spacing:-.01em; cursor:pointer; transition:transform .18s var(--ease); }
+.promo-tab:hover { transform:translateY(-2px); }
+.promo-tab__dismiss { display:grid; place-items:center; width:18px; height:18px; color:var(--muted); }
+.promo-tab__dismiss:hover { color:var(--ink); }
 .promo-popup-layer { position:fixed; z-index:95; inset:0; display:flex; align-items:center; justify-content:center; padding:20px; }
 .promo-popup-backdrop { position:absolute; inset:0; width:100%; height:100%; border:0; background:rgba(10,10,8,.55); animation:promo-fade-in .3s var(--ease); }
-.promo-popup { position:relative; z-index:1; width:min(360px,100%); padding:40px 32px 32px; display:flex; flex-direction:column; align-items:center; text-align:center; background:var(--paper); box-shadow:0 30px 70px rgba(0,0,0,.28); animation:promo-pop-in .35s var(--ease); }
+.promo-popup { position:relative; z-index:1; width:min(380px,100%); padding:40px 32px 32px; display:flex; flex-direction:column; align-items:center; text-align:center; background:var(--paper); box-shadow:0 30px 70px rgba(0,0,0,.28); animation:promo-pop-in .35s var(--ease); }
 .promo-popup .eyebrow { color:var(--mineral); }
 .promo-popup h2 { margin:10px 0 8px; font-family:var(--display); font-size:24px; font-weight:600; letter-spacing:.02em; }
 .promo-popup > p { margin:0 0 24px; color:var(--muted); font-size:12px; }
 .promo-popup__close { position:absolute; top:14px; right:14px; display:grid; place-items:center; width:30px; height:30px; color:var(--muted); }
 .promo-popup__close:hover { color:var(--ink); }
-.promo-scratch { position:relative; width:220px; height:220px; margin-bottom:22px; user-select:none; -webkit-user-select:none; -webkit-touch-callout:none; }
-.promo-scratch__reveal { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; border-radius:50%; background:var(--chalk); border:1px solid var(--line); user-select:none; }
-.promo-scratch__reveal strong { font-family:var(--display); font-size:18px; font-weight:600; letter-spacing:.02em; }
-.promo-scratch__reveal span { max-width:150px; color:var(--muted); font-size:11px; line-height:1.4; }
-.promo-scratch__canvas { position:absolute; inset:0; border-radius:50%; cursor:pointer; touch-action:none; user-select:none; -webkit-user-select:none; box-shadow:0 8px 20px rgba(0,0,0,.18); }
+.promo-popup form { width:100%; display:flex; flex-direction:column; gap:10px; }
+.promo-popup input { width:100%; padding:13px 14px; border:1px solid var(--line); background:transparent; font-size:13px; text-align:center; }
+.promo-popup input:focus { outline:0; border-color:var(--ink); }
 .promo-popup__cta { width:100%; }
-.promo-popup__fineprint { margin:0; color:var(--muted); font-size:10px; letter-spacing:.03em; }
+.promo-popup__fineprint { margin:14px 0 0; color:var(--muted); font-size:10px; letter-spacing:.03em; }
+.promo-popup__error { margin:0 0 10px; color:#a3453a; font-size:11px; }
+.promo-popup__success { display:flex; flex-direction:column; align-items:center; gap:6px; }
+.promo-popup__success strong { font-family:var(--display); font-size:22px; font-weight:600; letter-spacing:.02em; }
 @keyframes promo-fade-in { from { opacity:0; } to { opacity:1; } }
 @keyframes promo-pop-in { from { opacity:0; transform:scale(.94) translateY(8px); } to { opacity:1; transform:scale(1) translateY(0); } }
-@media (max-width:540px) { .promo-popup { padding:34px 22px 26px; } .promo-popup h2 { font-size:29px; } .promo-scratch { width:190px; height:190px; } }
+@media (max-width:540px) { .promo-popup { padding:34px 22px 26px; } .promo-popup h2 { font-size:29px; } .promo-tab { left:16px; bottom:16px; padding:11px 14px; font-size:12px; } }
